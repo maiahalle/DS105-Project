@@ -1,0 +1,202 @@
+# to use this code add "from twitter_word_count import get_most_common_words"
+# to call this function you must pass the twitter handle
+# some examples of calling the function
+#   cruz_df = get_most_common_words("sentedcruz")
+#   bernie_df = get_most_common_words("SenSanders")
+#   aoc_df = get_most_common_words("aoc")
+# This will return a dataframe with columns = ['Word', 'Count']
+
+
+# import the required libraries
+import requests
+import pandas
+import json
+import spacy
+from collections import Counter
+import config
+
+base_url = "https://api.twitter.com/2/"
+
+
+def create_tweet_url(user_id):
+    return "{}users/{}/tweets".format(base_url, user_id)
+
+def create_userid_url(user_handle):
+    return "{}users/by/username/{}".format(base_url, user_handle)
+
+
+def get_params():
+    # Tweet fields are adjustable.
+    # Options include:
+    # attachments, author_id, context_annotations,
+    # conversation_id, created_at, entities, geo, id,
+    # in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
+    # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
+    # source, text, and withheld
+    return {"tweet.fields": "created_at"}
+
+
+def bearer_oauth(r):
+    """
+    Method required by bearer token authentication.
+    """
+
+    r.headers["Authorization"] = f"Bearer {config.bearer_token}"
+    r.headers["User-Agent"] = "LSE-WordCounter"
+    return r
+
+def connect_to_endpoint(url, params):
+    response = requests.request("GET", url, auth=bearer_oauth, params=params)
+    return response.json()
+
+def get_twitter_id(handle):
+    url = create_userid_url(handle)
+    params = get_params()
+    json_response = connect_to_endpoint(url, params)
+    return json_response["data"]["id"]
+
+def get_most_common_words(handle):
+    url = create_tweet_url(get_twitter_id(handle))
+    params = get_params()
+    json_response = connect_to_endpoint(url, params)
+    tweets = [tweet["text"] for tweet in json_response["data"]]
+    print(tweets)
+
+
+    #SAVE THIS 
+
+    nlp = spacy.load('en_core_web_sm')
+    doc = nlp(" ".join(tweets))
+    # all tokens that arent stop words or punctuations
+   
+    include_types = ["ADJ", "NOUN", "PROPN", "VERB", "ADV"]
+
+    words = [token.lemma_.lower() for token in doc if token.is_alpha and token.pos_ in include_types]
+
+    word_freq = Counter(words)
+    common_words = word_freq.most_common(50)
+    return pandas.DataFrame(common_words, columns = ['Word', 'Count'])
+
+
+OcasioCortez_df = get_most_common_words("AOC")
+Adams_df = get_most_common_words("AlmaforCongress")
+Aderholt_df = get_most_common_words("Robert_Aderholt")
+Aguilar_df = get_most_common_words("aguilarpete")
+Allen_df = get_most_common_words("rickallen")
+Allred_df = get_most_common_words("ColinAllredTX")
+Amodei_df = get_most_common_words("AmodeiForNevada")
+Armstrong_df = get_most_common_words("Armstrong_ND")
+Arrington_df = get_most_common_words("JodeyArrington")
+Auchincloss_df = get_most_common_words("JakeAuch")
+Axne_df = get_most_common_words("Axne4Congress")
+Babin_df = get_most_common_words("Babin4Congress")
+Bacon_df = get_most_common_words("DonJBacon")
+Baird_df = get_most_common_words("JBaird1985")
+Balderson_df = get_most_common_words("Troy_Balderson")
+Banks_df = get_most_common_words("Jim_Banks")
+Barr_df = get_most_common_words("barrforcongress")
+Barragán_df = get_most_common_words("Nanette4CA")
+Bass_df = get_most_common_words("KarenBassLA")
+Beatty_df = get_most_common_words("JoyceBeatty")
+Bentz_df = get_most_common_words("CliffBentz")
+Bera_df = get_most_common_words("BeraForCongress")
+Bergman_df = get_most_common_words("JackBergman_MI1")
+Beyer_df = get_most_common_words("DonBeyerVA")
+Bice_df = get_most_common_words("stephaniebice")
+Biggs_df = get_most_common_words("andybiggs4az")
+Bishop_df = get_most_common_words("jdanbishop")
+Bishop_df = get_most_common_words("Bishop4Congress")
+Blumenauer_df = get_most_common_words("repblumenauer")
+BluntRochester_df = get_most_common_words("LisaBRochester")
+Boebert_df = get_most_common_words("laurenboebert")
+Bost_df = get_most_common_words("BostForCongress")
+Bourdeaux_df = get_most_common_words("Carolyn4GA7")
+Bowman_df = get_most_common_words("JamaalBowmanNY")
+Boyle_df = get_most_common_words("RepBrendanBoyle")
+Brady_df = get_most_common_words("bradyfortexas")
+Brooks_df = get_most_common_words("MoBrooks")
+Brown_df = get_most_common_words("BrownforMD")
+Brown_df = get_most_common_words("ShontelMBrown")
+Brownley_df = get_most_common_words("JuliaBrownley")
+Buck_df = get_most_common_words("BuckForColorado")
+Bucshon_df = get_most_common_words("DrLarryBucshon")
+Budd_df = get_most_common_words("TedBuddNC")
+Burchett_df = get_most_common_words("timburchett")
+Burgess_df = get_most_common_words("michaelcburgess")
+Bush_df = get_most_common_words("CoriBush")
+Bustos_df = get_most_common_words("CheriBustos")
+Butterfield_df = get_most_common_words("GKButterfield")
+Calvert_df = get_most_common_words("TeamCalvert")
+Cammack_df = get_most_common_words("Kat_Cammack")
+Carbajal_df = get_most_common_words("carbajalsalud")
+Cárdenas_df = get_most_common_words("Tcardenas")
+Carey_df = get_most_common_words("MikeCareyOH15")
+Carl_df = get_most_common_words("CarlForAlabama")
+Carson_df = get_most_common_words("Andre4Congress")
+Carter_df = get_most_common_words("Buddy_Carter")
+Carter_df = get_most_common_words("tcartersenate")
+Cartwright_df = get_most_common_words("CartwrightPA")
+Case_df = get_most_common_words("EdCaseHawaii")
+Casten_df = get_most_common_words("SeanCasten")
+Castor_df = get_most_common_words("KathyCastorFL")
+Castro_df = get_most_common_words("Castro4Congress")
+Cawthorn_df = get_most_common_words("CawthornforNC")
+Chabot_df = get_most_common_words("SteveChabot")
+Cheney_df = get_most_common_words("Liz_Cheney")
+Chu_df = get_most_common_words("JudyChuCampaign")
+Clark_df = get_most_common_words("TeamKClark")
+Clarke_df = get_most_common_words("VoteYvette")
+Cleaver_df = get_most_common_words("Vote4Cleaver")
+Cline_df = get_most_common_words("Cline4Virginia")
+Connolly_df = get_most_common_words("ElectConnolly")
+Cloud_df = get_most_common_words("MichaelJCloud")
+Comer_df = get_most_common_words("JamesComer")
+Clyburn_df = get_most_common_words("ClyburnSC06")
+Correa_df = get_most_common_words("voteloucorrea")
+Courtney_df = get_most_common_words("JoeCourtneyCT")
+Craig_df = get_most_common_words("AngieCraigMN")
+Crawford_df = get_most_common_words("RepRickCrawford")
+Crenshaw_df = get_most_common_words("DanCrenshawTX")
+Crow_df = get_most_common_words("JasonCrowCO")
+Cuellar_df = get_most_common_words("CuellarCampaign")
+Curtis_df = get_most_common_words("CurtisUT")
+Davids_df = get_most_common_words("sharicedavids")
+Davis_df = get_most_common_words("DannyKDavis7th")
+Davis_df = get_most_common_words("ElectRodney")
+Dean_df = get_most_common_words("MadeleineDean")
+DeFazio_df = get_most_common_words("DeFazio4Oregon")
+DeGette_df = get_most_common_words("DeGette5280")
+DeLauro_df = get_most_common_words("Rosa_DeLauro")
+DelBene_df = get_most_common_words("SuzanDelBene")
+Demings_df = get_most_common_words("valdemings")
+DesJarlais_df = get_most_common_words("tndesjarlais")
+Deutch_df = get_most_common_words("TedDeutch")
+DiazBalart_df = get_most_common_words("MarioDBCamp")
+Dingell_df = get_most_common_words("DebDingell")
+Doggett_df = get_most_common_words("LloydDoggettTX")
+Donalds_df = get_most_common_words("ByronDonalds")
+Doyle_df = get_most_common_words("VoteMikeDoyle")
+Duncan_df = get_most_common_words("Duncan4Congress")
+Dunn_df = get_most_common_words("DunnCampaign")
+Ellzey_df = get_most_common_words("JakeEllzey")
+Emmer_df = get_most_common_words("tomemmer")
+Escobar_df = get_most_common_words("vgescobar")
+Eshoo_df = get_most_common_words("Eshoo4Congress")
+Espaillat_df = get_most_common_words("EspaillatNY")
+Estes_df = get_most_common_words("RonEstesKS")
+Evans_df = get_most_common_words("DwightEvansPA")
+Fallon_df = get_most_common_words("FallonForTexas")
+Feenstra_df = get_most_common_words("RandyFeenstra")
+Ferguson_df = get_most_common_words("DrewFergusonGA")
+Finstad_df = get_most_common_words("BradFinstad")
+Fischbach_df = get_most_common_words("FischbachMN7")
+Fitzgerald_df = get_most_common_words("FitzgeraldForWI")
+Fitzpatrick_df = get_most_common_words("BrianFitzUSA")
+Fleischmann_df = get_most_common_words("chuck4congress")
+Fletcher_df = get_most_common_words("Lizzie4Congress")
+Flores_df = get_most_common_words("MayraFlores2022")
+Foster_df = get_most_common_words("Foster4Congress")
+Foxx_df = get_most_common_words("foxxforcongress")
+Frankel_df = get_most_common_words("LoisFrankel")
+
+
