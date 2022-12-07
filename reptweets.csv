@@ -205,7 +205,7 @@ Name,State,Party,Handles
 "Jordan, Jim",OH,R,Jim_Jordan
 "Joyce, David",OH,R,RepDaveJoyce
 "Joyce, John",PA,R,RepJohnJoyce
-"Kahele, Kaiali'i",HI,D,KaheleRep
+"Kahele, Kaiali'i",HI,D,RepKahele
 "Kaptur, Marcy",OH,D,RepMarcyKaptur
 "Katko, John",NY,R,RepJohnKatko
 "Keating, William",MA,D,USRepKeating
@@ -286,7 +286,7 @@ Name,State,Party,Handles
 "Moore, Blake D.",UT,R,RepBlakeMoore
 "Moore, Gwen",WI,D,RepGwenMoore
 "Morelle, Joe",NY,D,RepJoeMorelle
-"Moulton, Seth",MA,D,teammoulton
+"Moulton, Seth",MA,D,RepMoulton
 "Mrvan, Frank J.",IN,D,RepMrvan
 "Mullin, Markwayne",OK,R,RepMullin
 "Murphy, Gregory Francis",NC,R,RepGregMurphy
@@ -303,7 +303,7 @@ Name,State,Party,Handles
 "Norton, Eleanor Holmes",DC,D,EleanorNorton
 "O'Halleran, Tom",AZ,D,RepOHalleran
 "Obernolte, Jay",CA,R,JayObernolte
-"Ocasio-Cortez, Alexandria",NY,D,RepAOC
+"Ocasio-Cortez, Alexandria",NY,D,AOC
 "Omar, Ilhan",MN,D,Ilhan
 "Owens, Burgess",UT,R,RepBurgessOwens
 "Palazzo, Steven",MS,R,CongPalazzo
@@ -323,7 +323,7 @@ Name,State,Party,Handles
 "Phillips, Dean",MN,D,RepDeanPhillips
 "Pingree, Chellie",ME,D,chelliepingree
 "Plaskett, Stacey",VI,D,StaceyPlaskett
-"Pocan, Mark",WI,D,repmarkpocan
+"Pocan, Mark",WI,D,RepMarkPocan
 "Porter, Katie",CA,D,RepKatiePorter
 "Posey, Bill",FL,R,congbillposey
 "Pressley, Ayanna",MA,D,RepPressley
