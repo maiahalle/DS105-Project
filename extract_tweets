@@ -1,0 +1,78 @@
+# to use this code add "from twitter_word_count import get_most_common_words"
+# to call this function you must pass the twitter handle
+# some examples of calling the function
+#   cruz_df = get_most_common_words("sentedcruz")
+#   bernie_df = get_most_common_words("SenSanders")
+#   aoc_df = get_most_common_words("aoc")
+# This will return a dataframe with columns = ['Word', 'Count']
+
+
+# import the required libraries
+import requests
+import pandas
+import json
+import spacy
+from collections import Counter
+import config
+
+base_url = "https://api.twitter.com/2/"
+
+
+def create_tweet_url(user_id):
+    return "{}users/{}/tweets".format(base_url, user_id)
+
+def create_userid_url(user_handle):
+    return "{}users/by/username/{}".format(base_url, user_handle)
+
+
+def get_params():
+    # Tweet fields are adjustable.
+    # Options include:
+    # attachments, author_id, context_annotations,
+    # conversation_id, created_at, entities, geo, id,
+    # in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
+    # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
+    # source, text, and withheld
+    return {"tweet.fields": "created_at"}
+
+
+def bearer_oauth(r):
+    """
+    Method required by bearer token authentication.
+    """
+
+    r.headers["Authorization"] = f"Bearer {config.bearer_token}"
+    r.headers["User-Agent"] = "LSE-WordCounter"
+    return r
+
+def connect_to_endpoint(url, params):
+    response = requests.request("GET", url, auth=bearer_oauth, params=params)
+    return response.json()
+
+def get_twitter_id(handle):
+    url = create_userid_url(handle)
+    params = get_params()
+    json_response = connect_to_endpoint(url, params)
+    return json_response["data"]["id"]
+
+def get_most_common_words(handle):
+    url = create_tweet_url(get_twitter_id(handle))
+    params = get_params()
+    json_response = connect_to_endpoint(url, params)
+    tweets = [tweet["text"] for tweet in json_response["data"]]
+    print(tweets)
+
+
+    #SAVE THIS 
+
+    nlp = spacy.load('en_core_web_sm')
+    doc = nlp(" ".join(tweets))
+    # all tokens that arent stop words or punctuations
+   
+    include_types = ["ADJ", "NOUN", "PROPN", "VERB", "ADV"]
+
+    words = [token.lemma_.lower() for token in doc if token.is_alpha and token.pos_ in include_types]
+
+    word_freq = Counter(words)
+    common_words = word_freq.most_common(50)
+    return pandas.DataFrame(common_words, columns = ['Word', 'Count'])
