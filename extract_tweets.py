@@ -78,18 +78,22 @@ def get_tweet_dict(tweet, handle, name):
 # get all tweets for a twitter handle
 # returns a tweet data in a dataframe
 # if there are not tweets an empty dataframe will be returned
+
 def get_tweets(handle):
+    # initialize list to hold all the tweet dictionaries
+    dict_list = []
+
     id_dict = get_twitter_id(handle)
     if id_dict is None:
-        return None
+        # return empty data frame
+        return pandas.DataFrame(dict_list)
     
     url = create_tweet_url(id_dict["id"])
     params = get_params()
     # get first page
     json_response = connect_to_endpoint(url, params)
 
-    # initialize list to hold all the tweet dictionaries
-    dict_list = []
+    
     # while there is data to process extract tweet data
     while json_response and "data" in json_response:
         tweets = json_response["data"]
@@ -120,18 +124,29 @@ def add_word_count(row):
     df["handle"] = row["handle"]
     return df[["handle","Word","Count"]]
 
-df_politicians = pandas.read_csv("reptweets.csv")
+# main functions to return dictionary of datagrames and generate csv files
+def get_tweets_dfs():
+    df_politicians = pandas.read_csv("reptweets.csv")
+    
+    print("start load tweets")
+    df_tweets = pandas.concat([get_tweets(handle) for handle in df_politicians["Handles"]])
+    
+    print("process tweets and generate key words")
+    # add key_word_list column from a list this is faster using the pipe to reduce loading loading times
+    df_tweets['key_word_list'] = [get_tokens(doc) for doc in nlp.pipe(df_tweets.tweet_text)]
+    df_tweets.to_csv('tweets.csv', encoding='utf-8', index=False)
 
-df_tweets = pandas.concat([get_tweets(handle) for handle in df_politicians["Handles"]])
-# add key_word_list column from a list this is faster using the pipe to reduce loading loading times
-df_tweets['key_word_list'] = [get_tokens(doc) for doc in nlp.pipe(df_tweets.tweet_text)]
-df_tweets.to_csv('tweets.csv', encoding='utf-8', index=False)
+    df_grouped = df_tweets.groupby('handle',as_index=False).agg({'tweet_text': 'count','key_word_list': 'sum'})
 
-df_grouped = df_tweets.groupby('handle',as_index=False).agg({'tweet_text': 'count','key_word_list': 'sum'})
+    #rename columns
+    df_grouped.rename(columns = {'tweet_text':'tweet_count'}, inplace = True)
+    df_grouped.to_csv("grouped.csv", encoding='utf-8', index=False)
 
-#rename columns
-df_grouped.rename(columns = {'tweet_text':'tweet_count'}, inplace = True)
-df_grouped.to_csv("grouped.csv", encoding='utf-8', index=False)
+    print("get most frequent words")
+    df_word_count = pandas.concat([add_word_count(row) for index, row in df_grouped.iterrows()])
+    df_word_count.to_csv('word_count.csv', encoding='utf-8', index=False)
 
-df_word_count = pandas.concat([add_word_count(row) for index, row in df_grouped.iterrows()])
-df_word_count.to_csv('word_count.csv', encoding='utf-8', index=False)
+    return {"tweets_df": df_tweets, "summary_df": df_grouped, "freq_words_df": df_word_count}
+
+#call main function for debug
+df_dict = get_tweet_dfs()
