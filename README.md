@@ -7,7 +7,7 @@ As the idiom "birds of a feather flock together" suggests, people of the same id
 ## Data Collection
 
 **Data Set:**
-We collected data from all of the current Congresspeople's Twitter accounts from the past 30 days. In total, this was xxxxx Tweets. We got the list of Twitter handles from a Excel spreadsheet titled Congressional Twitter Accounts created by the University of California San Diego (UCSD) [(Link to Excel)](https://ucsd.libguides.com/congress_twitter). Our data set is comprised of 223 Democrats (including 4 Delegates) and 215 Republicans (including 1 Delegate and the Resident Commissioner of Puerto Rico), and 3 vacant seats. 
+We collected Tweets from all of the current Congresspeople's Twitter accounts from the past 30 days. In total, this was xxxxx Tweets. We got the list of Twitter handles from a Excel spreadsheet titled Congressional Twitter Accounts created by the University of California San Diego (UCSD) [(Link to Excel)](https://ucsd.libguides.com/congress_twitter). Our data set is comprised of 223 Democrats (including 4 Delegates) and 215 Republicans (including 1 Delegate and the Resident Commissioner of Puerto Rico), and 3 vacant seats. 
 
 <img width="640" alt="Screen Shot 2023-01-04 at 8 22 27 PM" src="https://user-images.githubusercontent.com/117990566/210680386-51fec2fc-0a3b-4e0a-a43d-f653efc48b63.png">
 This map illustrates the distribution of Congressional repersentatives throughout all 50 states.
@@ -21,19 +21,16 @@ This map illustrates the distribution of Republican and Democratic legislators t
 The code we used to gather our data can be divided into six key sections: implementing the API, finding the Twitter IDs, creating a data frame of all Tweets, extracting key words from the Tweets, finding the word count, and finally, generating csv files. 
 
 1. Implemeting the Twitter API to gather Tweets
-    
-`def connect_to_endpoint(url, params):
+
+<code>def connect_to_endpoint(url, params):
     session = requests.Session()
-    # configure retrying with a pause for half a minute
     retry = Retry(connect=10, backoff_factor=30)
     adapter = HTTPAdapter(max_retries=retry)
     session.mount('http://', adapter)
     session.mount('https://', adapter)
-    
     response = requests.request("GET", url, auth=bearer_oauth, params=params)
+    return response.json()</code>
     
-    return response.json()`
-
 One of initial obstacels we had to over come for this project was the Twitter API, which has three types of access levels. The most basic level allows users to retrieve up to 500 thousand Tweets per month and have 25 requests per 15 minutes. These limits would hinder our ability to gather the amount of data we needed so we decided to apply for the elevated access to be able to retrieve up to 2 million Tweets per month and have 50 requests per 15 minutes. However, even then, we had to retrive more than 2 million Tweets so we had to wait a month to finish gathering all our tweets. We also used csv files to store our data to avoid re-running the code more than necesary. 
 
 2. Finding and returning the Twitter ID based on passed Twitter handle's of politicians
@@ -41,23 +38,16 @@ One of initial obstacels we had to over come for this project was the Twitter AP
 `def get_twitter_id(handle):
     json_response = connect_to_endpoint(create_userid_url(handle), None)
 
-    # error checking in case a twitter handle can't be found
-    if json_response and "data" in json_response:
-        return {"id": json_response["data"]["id"],
-                "name": json_response["data"]["name"]}
-    else:
-        print("Error: id not found for ", handle)
-        return None`
-    
 The second major step in our code is to pass the Excel spreadsheet from UCSD into our code to find the Twitter ID of each Member of Congress. A Twitter ID is a Twitter generated, unique 64 number assigned to each Twitter user. For our projects puroposes, we use this ID to gather each legislators tweets from the past 30 days. 
 
 3. Geting all Tweets for each Twitter ID
 
-`   print("get tweets for ", handle)
-    url = create_tweet_url(id_dict["id"])
-    params = get_params()
-    # get first page
-    json_response = connect_to_endpoint(url, params)`
+`   def get_tweets(handle):
+    dict_list = []
+    csv_filename = "csv_cache/{}.csv".format(handle)
+    if os.path.isfile(csv_filename):
+        print ("loaded tweets from file for ", handle)
+        return pandas.read_csv(csv_filename)`
 
 One code related challenge we faced was the length of time it took to run the code. Because our dataset contains 535 twitter users, the code would take hours to fully run. To keep track of the process of running code and to make sure things were running smoothly, we put print statements like `print ("loaded tweets from file for ", handle)` and `print("get tweets for ", handle)` 
  
@@ -83,15 +73,11 @@ The second to last major step was to create a new coloumn into the dataframe tha
 
 6. Return dictionary of dataframes and generate csv files
 
-    `df_tweets = pandas.concat([get_tweets(handle) for handle in df_politicians["handle"]])
-    
-    df_tweets['key_word_list'] = [get_tokens(doc) for doc in nlp.pipe(df_tweets.tweet_text)]
-    df_tweets.to_csv('tweets.csv', encoding='utf-8', index=False)
-    
-    df_grouped = df_tweets.groupby('handle',as_index=False).agg({'tweet_text': 'count','key_word_list': 'sum'})
+        `df_tweets['key_word_list'] = [get_tokens(doc) for doc in nlp.pipe(df_tweets.tweet_text)]
+        df_tweets.to_csv(tweet_filename, encoding='utf-8', index=False)
 
-    df_word_count = pandas.concat([add_word_count(row) for index, row in df_grouped.iterrows()])
-    df_word_count.to_csv('word_count.csv', encoding='utf-8', index=False)
+        df_grouped = group_tweets(df_tweets, group_filename)
+        df_word_count = count_words(word_count_filename, df_grouped)
 
     return {"tweets_df": df_tweets, "summary_df": df_grouped, "freq_words_df": df_word_count}`
     
