@@ -15,6 +15,34 @@ This map illustrates the distribution of Congressional repersentatives throughou
 <img width="490" alt="Screen Shot 2023-01-04 at 8 19 42 PM" src="https://user-images.githubusercontent.com/117990566/210680098-a14c614f-087a-4fbe-a10b-9afba17df567.png">
 This map illustrates the distribution of Republican and Democratic legislators throughtout the US.
 
+**Code:**
+The code we used to gather our data can be divided into six key sections: implementing the API, finding the Twitter ids, creating a data frame of all tweets, extracting key words from the tweets, finding the word count, and finally, generating csv files.
+
+1. Implemeting the Twitter API to gather tweets
+
+`# call twitter api with request url and parameters and return the response in json
+def connect_to_endpoint(url, params):
+    session = requests.Session()
+    # configure retrying with a pause for half a minute
+    retry = Retry(connect=10, backoff_factor=30)
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount('http://', adapter)
+    session.mount('https://', adapter)
+    
+    response = requests.request("GET", url, auth=bearer_oauth, params=params)
+    
+    return response.json()`
+
+2. Finding and returning the Twitter id based on passed twitter handle's of politicians
+
+3. Geting all tweets for each Twitter id
+
+4. Using spacy's natural language process to exctract key words from tweets
+
+5. Counting how many times each key word was used
+Adding new coloumn into the dataframe called word count
+
+6. Return dictionary of dataframes and generate csv files
 
 
 
