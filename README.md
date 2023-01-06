@@ -18,7 +18,7 @@ This map illustrates the distribution of Republican and Democratic legislators t
 
 
 **Code:**
-The code we used to gather our data can be divided into six key sections: implementing the API, finding the Twitter IDs, creating a data frame of all Tweets, extracting key words from the Tweets, finding the word count, and finally, generating csv files.
+The code we used to gather our data can be divided into six key sections: implementing the API, finding the Twitter IDs, creating a data frame of all Tweets, extracting key words from the Tweets, finding the word count, and finally, generating csv files. 
 
 1. Implemeting the Twitter API to gather Tweets
     
@@ -34,7 +34,7 @@ The code we used to gather our data can be divided into six key sections: implem
     
     return response.json()`
 
-One of initial obstacels we had to over come for this project was the Twitter API, which has three types of access levels. The most basic level allows users to retrieve up to 500 thousand Tweets per month and have 25 requests per 15 minutes. These limits would hinder our ability to gather the amount of data we needed so we decided to apply for the elevated access to be able to retrieve up to 2 million Tweets per month and have 50 requests per 15 minutes.
+One of initial obstacels we had to over come for this project was the Twitter API, which has three types of access levels. The most basic level allows users to retrieve up to 500 thousand Tweets per month and have 25 requests per 15 minutes. These limits would hinder our ability to gather the amount of data we needed so we decided to apply for the elevated access to be able to retrieve up to 2 million Tweets per month and have 50 requests per 15 minutes. However, even then, we had to retrive more than 2 million Tweets so we had to wait a month to finish gathering all our tweets. We also used csv files to store our data to avoid re-running the code more than necesary. 
 
 2. Finding and returning the Twitter ID based on passed Twitter handle's of politicians
 
@@ -64,25 +64,60 @@ One code related challenge we faced was the length of time it took to run the co
 
 4. Using spacy to exctract key words from Tweets
 
-include_types = ["ADJ", "NOUN", "PROPN", "VERB", "ADV"]
-exclude_words = ["rt", "amp"]
+`include_types = ["ADJ", "NOUN", "PROPN", "VERB", "ADV"]
+exclude_words = ["rt", "amp"]`
 
-The most frequent words in English are "the", 
-
-are conjuctions like "and" and 
 
 A third barrier we faced was the fact that prepositions, interjections, and conjunctions were the most frequently Tweeted words. However, words like "the", "at", and "in", do not give us context to what the Members of Congress are Tweeting and thinking about. To overcome this, we used Spacy's natural language process to extract onlt adjectives, nouns, propernouns, verbs and adverbs. It is important to note that we decided to exclude "rt" because , while it would give us interesting information on how mant times a congressperson reTweeted in a month, our project only focuses on the individual words of the Tweet. 
 
 5. Counting how many times each key word was used
-Adding new coloumn into the dataframe called word count
+
+`def add_word_count(row):
+    word_freq = Counter(row["key_word_list"])
+    common_words = word_freq.most_common(50)
+    df = pandas.DataFrame(common_words, columns = ['Word', 'Count'])
+    df["handle"] = row["handle"]
+    return df[["handle","Word","Count"]]`
+
+The second to last major step was to create a new coloumn into the dataframe that would list out the 50 most common words Tweeted. 
 
 6. Return dictionary of dataframes and generate csv files
 
+    `df_tweets = pandas.concat([get_tweets(handle) for handle in df_politicians["handle"]])
+    
+    df_tweets['key_word_list'] = [get_tokens(doc) for doc in nlp.pipe(df_tweets.tweet_text)]
+    df_tweets.to_csv('tweets.csv', encoding='utf-8', index=False)
+    
+    df_grouped = df_tweets.groupby('handle',as_index=False).agg({'tweet_text': 'count','key_word_list': 'sum'})
 
+    df_word_count = pandas.concat([add_word_count(row) for index, row in df_grouped.iterrows()])
+    df_word_count.to_csv('word_count.csv', encoding='utf-8', index=False)
+
+    return {"tweets_df": df_tweets, "summary_df": df_grouped, "freq_words_df": df_word_count}`
+    
+Lastly, we generated the csv files. To do this, we first had to load the file containing the legislator's Twitter handles, and then for each politician we called the Twitter API and exctracted their tweets. The final dataframe which was converted into a csv file contained information on but not limited to the name, twitter id, text of the tweet, retweet, reply, and like counts, and list of the key texts.
+
+
+## Exploratory Data Analysis
+
+## Findings
+
+## Conclusion
+
+## Contributions
+
+**Maia:**
+Maia created the code to collect the Twitter data set and wrote the Motivation and Data Collection sections of the README.md.
+
+
+
+**Amara:**
+
+**Samad:**
 
 # NOTES TO INCLUDE: [delete later]
 ## 
 
 
 # THINGS TO DO : [delete later]
-## MAKE SURE TWEET AND TWITTER AND API AND ID IS CAPITALIZED, grammar, fix code format, make spaces between sections
+## MAKE SURE TWEET AND TWITTER AND API AND ID IS CAPITALIZED, grammar, fix code format, make spaces between sections, organize the files better
