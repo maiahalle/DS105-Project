@@ -26,10 +26,6 @@ We collected Tweets from all of the current Congresspeople's Twitter accounts fr
 <img width="640" alt="Screen Shot 2023-01-04 at 8 22 27 PM" src="https://user-images.githubusercontent.com/117990566/210680386-51fec2fc-0a3b-4e0a-a43d-f653efc48b63.png">
 This map illustrates the distribution of Congressional repersentatives throughout all 50 states.
 
-<img width="490" alt="Screen Shot 2023-01-04 at 8 19 42 PM" src="https://user-images.githubusercontent.com/117990566/210680098-a14c614f-087a-4fbe-a10b-9afba17df567.png">
-This map illustrates the distribution of Republican and Democratic legislators throughtout the US.
-
-
 ---
 **Code Expalnation:**
 The code we used to gather our data can be divided into six key sections: implementing the API, finding the Twitter IDs, creating a data frame of all Tweets, extracting key words from the Tweets, finding the word count, and finally, generating csv files. 
@@ -115,6 +111,8 @@ Maia created the code to collect the Twitter data set and wrote the Index, Motiv
 **Samad:**
 
 ## Citations
+
+Brush, M. (2010, December 21). White House not concerned about new census numbers. Michigan Radio. Retrieved January 6, 2023, from https://www.michiganradio.org/politics-government/2010-12-21/white-house-not-concerned-about-new-census-numbers 
 
 # THINGS TO DO : [delete later]
 ## grammar,  organize the files better
