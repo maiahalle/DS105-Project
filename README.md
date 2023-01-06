@@ -1,5 +1,19 @@
 # Twitter Birds of a Feather Flock Together: Analyzing American Legislator's Frequent Used Words in Tweets
-[Motivations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#motivations)
+
+**Index**
+1. [Motivations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#motivations) 
+2. [Data Collection] (https://github.com/maiahalle/DS105-Project/blob/main/README.md#data-collection)
+    - Data Set
+    - Code Explanation
+3. Exploratory Data Analysis
+4. Findings
+5. Conclusion
+6. Contributions
+    - Maia
+    - Amara
+    - Samad
+7. Citations
+
 ## Motivations
 
 As the idiom "birds of a feather flock together" suggests, people of the same ideology, hobbies, and interests tend to stick together. Will this idiom ring true for American senators and repersenatives? To find out, our group analyzed the most frequent words used on Twitter in the past 30 days by all 535 Members of Congress. Will legislators from the same political party Tweet similar words to each other? We predict that not only will legislators Tweet similar words with their associated political party but Republicans will be more likely to Tweet words like "family", "border", and "steal". This is because Republicans are traditionally known for their "family" values, borders and immigration is a key talking point for them, and the word "steal" is associated with right-wing conspiracies. On the other hand, we predict Democrats will frequently use "green" and "rights" because the Democratic party has been focusing their efforts on climate change and increasing rights for minority groups. With an increased polarization in not only Congress but in wider US society, the information we gather from Twitter is an important insight into what American legislators have on their mind and wether or not that alligns to the rest of their party. 
@@ -17,7 +31,7 @@ This map illustrates the distribution of Republican and Democratic legislators t
 
 
 ---
-**Code:**
+**Code Expalnation:**
 The code we used to gather our data can be divided into six key sections: implementing the API, finding the Twitter IDs, creating a data frame of all Tweets, extracting key words from the Tweets, finding the word count, and finally, generating csv files. 
 
 1. Implemeting the Twitter API to gather Tweets
@@ -93,8 +107,7 @@ Lastly, we generated the csv files. To do this, we first had to load the file co
 ## Contributions
 
 **Maia:**
-Maia created the code to collect the Twitter data set and wrote the Motivation and Data Collection sections of the README.md.
-
+Maia created the code to collect the Twitter data set and wrote the Index, Motivation, Data Collection, and Citations sections of the README.md.
 
 
 **Amara:**
