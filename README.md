@@ -2,12 +2,12 @@
 
 **Index**
 1. [Motivations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#motivations) 
-2. [Data Collection] (https://github.com/maiahalle/DS105-Project/blob/main/README.md#data-collection)
+2. [Data Collection](https://github.com/maiahalle/DS105-Project/blob/main/README.md#data-collection)
     - Data Set
     - Code Explanation
-3. Exploratory Data Analysis
-4. Findings
-5. Conclusion
+3. [Exploratory Data Analysis](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
+4. [Findings](https://github.com/maiahalle/DS105-Project/blob/main/README.md#findings)
+5. [Conclusion](https://github.com/maiahalle/DS105-Project/blob/main/README.md#conclusion)
 6. Contributions
     - Maia
     - Amara
@@ -114,6 +114,7 @@ Maia created the code to collect the Twitter data set and wrote the Index, Motiv
 
 **Samad:**
 
+## Citations
 
 # THINGS TO DO : [delete later]
 ## grammar,  organize the files better
