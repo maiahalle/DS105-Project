@@ -21,6 +21,7 @@ The code we used to gather our data can be divided into six key sections: implem
 1. Implemeting the Twitter API to gather tweets
 
 `# call twitter api with request url and parameters and return the response in json
+
 def connect_to_endpoint(url, params):
     session = requests.Session()
     # configure retrying with a pause for half a minute
