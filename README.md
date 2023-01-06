@@ -8,11 +8,11 @@
 3. [Exploratory Data Analysis](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
 4. [Findings](https://github.com/maiahalle/DS105-Project/blob/main/README.md#findings)
 5. [Conclusion](https://github.com/maiahalle/DS105-Project/blob/main/README.md#conclusion)
-6. Contributions
+6. [Contributions](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
     - Maia
     - Amara
     - Samad
-7. Citations
+7. [Citations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#citations)
 
 ## Motivations
 
