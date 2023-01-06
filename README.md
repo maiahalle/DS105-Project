@@ -1,6 +1,6 @@
 # Twitter Birds of a Feather Flock Together: Analyzing American Legislator's Frequent Used Words in Tweets
 
-**Index**
+## Index
 1. [Motivations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#motivations) 
 2. [Data Collection](https://github.com/maiahalle/DS105-Project/blob/main/README.md#data-collection)
     - Data Set
