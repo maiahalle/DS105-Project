@@ -21,7 +21,7 @@ As the idiom "birds of a feather flock together" suggests, people of the same id
 ## Data Collection
 
 **Data Set:**
-We collected Tweets from all of the current Congresspeople's Twitter accounts from the past 30 days. In total, this was xxxxx Tweets. We got the list of Twitter handles from a Excel spreadsheet titled Congressional Twitter Accounts created by the [University of California San Diego (UCSD)](https://ucsd.libguides.com/congress_twitter). Our data set is comprised of 223 Democrats (including 4 Delegates) and 215 Republicans (including 1 Delegate and the Resident Commissioner of Puerto Rico), and 3 vacant seats. 
+We collected Tweets from all of the current Congresspeople's Twitter accounts from the past 30 days, which was almost 3 million Tweets. We got the list of Twitter handles from a Excel spreadsheet titled Congressional Twitter Accounts created by the [University of California San Diego (UCSD)](https://ucsd.libguides.com/congress_twitter). Our data set is comprised of 223 Democrats (including 4 Delegates) and 215 Republicans (including 1 Delegate and the Resident Commissioner of Puerto Rico), and 3 vacant seats. 
 
 <img width="640" alt="Screen Shot 2023-01-04 at 8 22 27 PM" src="https://user-images.githubusercontent.com/117990566/210680386-51fec2fc-0a3b-4e0a-a43d-f653efc48b63.png">
 This map illustrates the distribution of Congressional repersentatives throughout all 50 states.
