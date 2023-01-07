@@ -77,7 +77,7 @@ def get_tweet_dict(tweet, handle, name):
 
 # get all tweets for a twitter handle
 # returns a tweet data in a dataframe
-# if there are not tweets an empty dataframe will be returned
+# if there are no tweets, an empty dataframe will be returned
 def get_tweets(handle):
     # initialize list to hold all the tweet dictionaries
     dict_list = []
@@ -128,14 +128,16 @@ def add_word_count(row):
     word_freq = Counter(row["key_word_list"])
     common_words = word_freq.most_common(50)
     df = pandas.DataFrame(common_words, columns = ['Word', 'Count'])
+    # adding a new row titled "handle" 
     df["handle"] = row["handle"]
+    # reordering the rows so the Twitter handle is the first row
     return df[["handle","Word","Count"]]
 
 def group_tweets(df_tweets, group_filename):
     print("creating summary grouping by handle")
     df_grouped = df_tweets.groupby('handle',as_index=False).agg({'tweet_text': 'count','key_word_list': 'sum'})
 
-    #rename columns
+    #rename "tweet_text" column to "tweet_count" for clarification
     df_grouped.rename(columns = {'tweet_text':'tweet_count'}, inplace = True)
     df_grouped.to_csv(group_filename, encoding='utf-8', index=False)
     return df_grouped
