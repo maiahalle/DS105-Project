@@ -80,7 +80,7 @@ A second barrier we faced was the fact that prepositions, interjections, and con
 
 <pre><code>def group_tweets(df_tweets, group_filename):
     print("creating summary grouping by handle")
-    df_grouped = df_tweets.groupby('handle',as_index=False).agg({'tweet_text': 'count','key_word_list': 'sum'})
+    df_grouped = df_tweets.groupby('handle',as_index=False).agg({'tweet_text': 'count','key_word_list': 'sum'})</code></pre>
     
 <pre><code>df_grouped = group_tweets(df_tweets, group_filename)
         df_word_count = count_words(word_count_filename, df_grouped)</code></pre>
