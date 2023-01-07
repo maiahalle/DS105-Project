@@ -28,19 +28,11 @@ This map illustrates the distribution of Congressional repersentatives throughou
 
 ---
 **Code Expalnation:**
-The code we used to gather our data can be divided into six key sections: implementing the twitter API to make querries, convertin json to dataframe, extracting key words from the Tweets, grouping and counting keywords per user, and finally, generating csv files. 
+The code we used to gather our data can be divided into four key sections: implementing the twitter API to make querries, converting the twitter json response to a dataframe, extracting key words from each tweet, and lastly grouping and counting keywords per user. 
 
 1. Implemet the Twitter API to retreive Twitter IDs and pages of Tweets
-
-<pre><code>def connect_to_endpoint(url, params):
-    session = requests.Session()
-    # configure retrying with a pause for half a minute
-    retry = Retry(connect=10, backoff_factor=30)
-    adapter = HTTPAdapter(max_retries=retry)
-    session.mount('http://', adapter)
-    session.mount('https://', adapter)</code></pre>
     
-One of initial obstacels we had to over come for this project was the Twitter API, which has three types of access levels. The most basic level allows users to retrieve up to 500 thousand Tweets per month and have 25 requests per 15 minutes. These limits would hinder our ability to gather the amount of data we needed so we decided to apply for the elevated access to be able to retrieve up to 2 million Tweets per month and have 50 requests per 15 minutes. However, even then, we had to retrive more than 2 million Tweets so we had to wait a month to finish gathering all our tweets. We also used csv files to store our data to avoid re-running the code more than necesary. 
+One of initial obstacels we had to overcome for this project was the Twitter API, which has three types of access levels. The most basic level allows users to retrieve up to 500 thousand Tweets per month and have 25 requests per 15 minutes. These limits would hinder our ability to gather the amount of data we needed so we decided to apply for the elevated access to be able to retrieve up to 2 million Tweets per month and have 50 requests per 15 minutes. However, even then, we had to retrive more than 2 million Tweets so we had to wait a month to finish gathering all our tweets. Additionallly the maximum number of tweets per request is 100 and it would take 15 minutes to retrieve 5,000 tweets. To put it into context, the average number of tweets per Member of Congress in our data set is 2,842 and most politiicians tweeted more than 3,000 for the 30 day time period we used. This means it would take around 10 minutes per legislator. To save time and prevent reaching the request limit, we used csv files to store our data to avoid using the Twitter API to ask for data we previously requested and re-running the code more than necesary. 
 
 2. Convert json to dataframe
 
@@ -63,44 +55,48 @@ The second major step we took was extracting the necesary data from the Twitter 
             "like_count": metrics["reply_count"],
             "quote_count": metrics["quote_count"]}</code></pre>
        
-       
-       
-<pre><code>dict_list.extend([get_tweet_dict(tweet, handle, id_dict["name"]) for tweet in json_response["data"]])</code></pre>
- 
-<pre><code>df_tweets = pandas.concat([get_tweets(handle) for handle in df_politicians["handle"]])</code></pre>
+The JSON repsonse is a tree structure and we needed to create columns per tweet, so this function created a name value pair dictionary that could be used to create an array of consistent dictionaries to be used creating our panda dataframe.       
 
 3. Use spacy to exctract key words from Tweets
 
-<pre><code>include_types = ["ADJ", "NOUN", "PROPN", "VERB", "ADV"]
-exclude_words = ["rt", "amp"]</code></pre>
+<pre><code>nlp = spacy.load("en_core_web_sm")
+nlp.disable_pipe("parser")
+nlp.add_pipe("sentencizer")</code></pre>
 
-A second barrier we faced was the fact that prepositions, interjections, and conjunctions were the most frequently Tweeted words. However, words like "the", "at", and "in", do not give us context to what the Members of Congress are Tweeting and thinking about. To overcome this, we used Spacy's natural language process to extract onlt adjectives, nouns, propernouns, verbs and adverbs. It is important to note that we decided to exclude "rt" because , while it would give us interesting information on how mant times a congressperson reTweeted in a month, our project only focuses on the individual words of the Tweet. 
+To make the code run faster, we used the sentencizer rather than the default parser since we were only using a limited number of functions from Spacy. 
+
+<pre><code>include_types = ["ADJ", "NOUN", "PROPN", "VERB", "ADV"]
+
+def get_tokens(doc):
+    return [token.lemma_.lower() for token in doc if token.is_alpha and token.pos_ in include_types and token.lemma_.lower() not in exclude_words]</code></pre>
+    
+A second barrier we faced was the fact that prepositions, interjections, and conjunctions were the most frequently Tweeted words. However, words like "the", "at", and "in", do not give us context to what the Members of Congress are Tweeting and thinking about. To overcome this, we used Spacy's natural language process to extract only adjectives, nouns, propernouns, verbs and adverbs. Furthermore, to group past tense, plurals, and similar variables of the same word we used the lemma to extract only the base word. For example, "history", "historical", and "histories" would all be grouped into  "history".
+
+<pre><code>exclude_words = ["rt", "amp"]</code></pre>
+
+It is important to note that we decided to exclude "rt" because , while it would give us interesting information on how mant times a congressperson re-tweeted in a month, our project only focuses on the individual words of the Tweet. 
 
 4. Group and count keywords per user and list all of their Tweets
 
-<pre><code>def group_tweets(df_tweets, group_filename):
-    print("creating summary grouping by handle")
-    df_grouped = df_tweets.groupby('handle',as_index=False).agg({'tweet_text': 'count','key_word_list': 'sum'})</code></pre>
-    
-<pre><code>df_grouped = group_tweets(df_tweets, group_filename)
-        df_word_count = count_words(word_count_filename, df_grouped)</code></pre>
+<pre><code>def add_word_count(row):
+    word_freq = Counter(row["key_word_list"])
+    common_words = word_freq.most_common(50)
+    df = pandas.DataFrame(common_words, columns = ['Word', 'Count'])
+    df["handle"] = row["handle"]
+    return df[["handle","Word","Count"]]</code></pre> 
 
-The second to last major step was to group all the keywords by Twitter handle and count the total amount of tweets. A third code related challenge we faced was the length of time it took to run the code. Because our dataset contains 535 twitter users, the code would take hours to fully run. To keep track of the process of running code and to make sure things were running smoothly, we put print statements like <pre><code>print("creating summary grouping by handle")</code></pre>.
+The last major step was to group all the keywords by Twitter handle and to gather all the keywords from each Tweet into one array to count. Finally, we used a Counter to count the keywords and then find the 50 most frequently used word per legislator, which we used to create a new data frame and csv file. 
 
-5. Return dictionary of dataframes and generate csv files
-
-<pre><code>df_tweets['key_word_list'] = [get_tokens(doc) for doc in nlp.pipe(df_tweets.tweet_text)]
-df_tweets.to_csv(tweet_filename, encoding='utf-8', index=False)
-
-df_grouped = group_tweets(df_tweets, group_filename)
-df_word_count = count_words(word_count_filename, df_grouped)
-
-return {"tweets_df": df_tweets, "summary_df": df_grouped, "freq_words_df": df_word_count}</code></pre>
-    
-Lastly, we generated the csv files. To do this, we first had to load the file containing the legislator's Twitter handles, and then for each politician we called the Twitter API and exctracted their tweets. The final dataframe which was converted into a csv file contained information on but not limited to the name, twitter id, text of the tweet, retweet, reply, and like counts, and list of the key texts.
-
+<img width="201" alt="image" src="https://user-images.githubusercontent.com/117990566/211174292-baf767c5-bc0b-41d6-b918-ebdcb75063e0.png">
+This is a snipet of what our csv file looks like. On the far left is Rep. Austin Scott's Twitter handle, in the middle is 5 of his top 50 frequntly used keywords, and then on the far right is how many times each word was used in the time frame. 
 
 ## Exploratory Data Analysis
+
+What is in the data? 
+What does it look like in general? 
+How big are your datasets? 
+What is the range and distribution of the most relevant variables?
+
 
 ## Findings
 
@@ -109,8 +105,7 @@ Lastly, we generated the csv files. To do this, we first had to load the file co
 ## Contributions
 
 **Maia:**
-Maia created the code to collect the Twitter data set and wrote the Index, Motivation, Data Collection, and Citations sections of the README.md.
-
+Maia created the code to collect the Twitter dataset and wrote the Index, Motivation, Data Collection, and Citations sections of the README.md.
 
 **Amara:**
 
