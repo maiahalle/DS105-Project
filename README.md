@@ -85,7 +85,7 @@ A second barrier we faced was the fact that prepositions, interjections, and con
 <pre><code>df_grouped = group_tweets(df_tweets, group_filename)
         df_word_count = count_words(word_count_filename, df_grouped)</code></pre>
 
-The second to last major step was to group all the keywords by Twitter handle and count the total amount of tweets. A third code related challenge we faced was the length of time it took to run the code. Because our dataset contains 535 twitter users, the code would take hours to fully run. To keep track of the process of running code and to make sure things were running smoothly, we put print statements like `print("creating summary grouping by handle")`. 
+The second to last major step was to group all the keywords by Twitter handle and count the total amount of tweets. A third code related challenge we faced was the length of time it took to run the code. Because our dataset contains 535 twitter users, the code would take hours to fully run. To keep track of the process of running code and to make sure things were running smoothly, we put print statements like <pre><code>print("creating summary grouping by handle")</code></pre>.
 
 5. Return dictionary of dataframes and generate csv files
 
