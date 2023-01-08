@@ -5,6 +5,7 @@
 2. [Data Collection](https://github.com/maiahalle/DS105-Project/blob/main/README.md#data-collection)
     - Data Set
     - Code Explanation
+    - CSV Files
 3. [Exploratory Data Analysis](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
 4. [Findings](https://github.com/maiahalle/DS105-Project/blob/main/README.md#findings)
 5. [Conclusion](https://github.com/maiahalle/DS105-Project/blob/main/README.md#conclusion)
@@ -89,6 +90,17 @@ The last major step was to group all the keywords by Twitter handle and to gathe
 
 <img width="201" alt="image" src="https://user-images.githubusercontent.com/117990566/211174292-baf767c5-bc0b-41d6-b918-ebdcb75063e0.png">
 This is a snipet of what our csv file looks like. On the far left is Rep. Austin Scott's Twitter handle, in the middle is 5 of his top 50 frequntly used keywords, and then on the far right is how many times each word was used in the time frame. 
+
+---
+**CSV Files:**
+
+Becuase the csv files were too large to upload to github, I have linked the grouped.csv and tweets.csv files here.
+
+grouped.csv:
+https://drive.google.com/file/d/1dQA9-0dUVCP86vxsk16WZewj3J7u6yGM/view?usp=drive_web
+
+tweets.csv:
+https://drive.google.com/file/d/1PgatNy2y8jExcTvWxDlkcaUwN9YTWHFV/view?usp=drive_web
 
 ## Exploratory Data Analysis
 
