@@ -117,7 +117,7 @@ What is the range and distribution of the most relevant variables?
 ## Contributions
 
 **Maia:**
-Maia created the code to collect the Twitter dataset and wrote the Index, Motivation, Data Collection, and Citations sections of the README.md.
+Maia created the code to collect the Twitter dataset showing the 50 most common used words per twitter handles. She also wrote the Index, Motivation, Data Collection, and Citations sections of the README.md.
 
 **Amara:**
 
