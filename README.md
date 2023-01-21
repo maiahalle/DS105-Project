@@ -12,7 +12,7 @@
 6. [Contributions](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
     - Maia
     - Amara
-    - Samad
+    - Sarmad
 7. [Citations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#citations)
 
 ## Motivations
@@ -121,7 +121,7 @@ Maia created the code to collect the Twitter dataset showing the 50 most common 
 
 **Amara:**
 
-**Samad:**
+**Sarmad:**
 
 ## Citations
 
