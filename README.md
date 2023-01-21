@@ -17,27 +17,28 @@
 
 ## Motivations
 
-As the idiom "birds of a feather flock together" suggests, people of similar ideologies, hobbies, and interests tend to stick together. Will this idiom ring true for American senators and representatives? To find out, our group analyzed the most frequent words used on Twitter in the past 30 days by all 535 Members of Congress. Will legislators from the same political party Tweet similar words to each other? We predict that not only will legislators tweet similar words with their associated political party, but Republicans will be more likely to Tweet words like "family", "border", and "steal". This is because Republicans are generally known for their emphasis on traditional family values (Gronbeck-Tedesco, 2022), border security (Oliphant & Cerda, 2022), and crime (Gambino & Greve, 2022). On the other hand, we predict Democrats will frequently use "green" and "rights" because the Democratic party has been focusing their efforts on climate change (Kennedy & Johnson, 2020) and increasing rights for groups such as racial and sexual minorities (Jones, 2020) . With an increased polarization in not only Congress but in wider US society, the information we gather from Twitter are important insights into what American legislators have on their minds and whether or not that aligns with the rest of their party.
+As the idiom "birds of a feather flock together" suggests, people of similar ideologies, hobbies, and interests tend to stick together. Will this idiom ring true for American senators and representatives? To find out, our group analysed the most frequent words used on Twitter in the past 30 days by all 535 Members of the United States Congress to verify whether or not legislators from the same political party tweet similar words to each other. Our hypothesis is that not only will legislators tweet similar words with their associated political party, but Republicans will be more likely to tweet words like "family", "border", and "steal". This is because Republicans are generally known for their emphasis on traditional family values (Gronbeck-Tedesco, 2022), border security (Oliphant & Cerda, 2022), and crime (Gambino & Greve, 2022). On the other hand, we predict Democrats will more frequently use words such as  "green" and "rights" because the Democratic party has been focusing their efforts on climate change (Kennedy & Johnson, 2020) and increasing rights for groups such as racial and sexual minorities (Jones, 2020), respectively. With increased polarization in not only Congress but the wider US society, the information we gather from Twitter are important insights into what American legislators have on their minds and whether or not that aligns with the rest of their party.
 
 ## Data Collection
 
 **Data Set:**
-We collected Tweets from all of the current Congresspeople's Twitter accounts from the past 30 days, which was almost 3 million Tweets. We got the list of Twitter handles from a Excel spreadsheet titled Congressional Twitter Accounts created by the [University of California San Diego (UCSD)](https://ucsd.libguides.com/congress_twitter). Our data set is comprised of 223 Democrats (including 4 Delegates) and 215 Republicans (including 1 Delegate and the Resident Commissioner of Puerto Rico), and 3 vacant seats. 
+We collected tweets from all of the current Congresspeople's Twitter accounts from the past 30 days. This amounted to almost 3 million tweets. We got the list of Twitter handles from a Excel spreadsheet titled Congressional Twitter Accounts created by the [University of California San Diego (UCSD)](https://ucsd.libguides.com/congress_twitter) (Smith, 2022). Our data set is comprised of 223 Democrats (including 4 Delegates) and 215 Republicans (including 1 Delegate and the Resident Commissioner of Puerto Rico), and 3 vacant seats. 
 
 <img width="640" alt="Screen Shot 2023-01-04 at 8 22 27 PM" src="https://user-images.githubusercontent.com/117990566/210680386-51fec2fc-0a3b-4e0a-a43d-f653efc48b63.png">
-This map illustrates the distribution of Congressional repersentatives throughout all 50 states.
+This map illustrates the distribution of Congressional representatives throughout all 50 states.
 
 ---
-**Code Expalnation:**
-The code we used to gather our data can be divided into four key sections: implementing the twitter API to make querries, converting the twitter json response to a dataframe, extracting key words from each tweet, and lastly grouping and counting keywords per user. 
+**Code Explanation:**
+The code we used to gather our data can be divided into four key sections. First, implementing the twitter API to make queries. Second, converting the twitter JSON response to a dataframe. Third, extracting key words from each tweet. Lastly, grouping and counting keywords per user.
 
-1. Implemet the Twitter API to retreive Twitter IDs and pages of Tweets
+
+1. Implement the Twitter API to retrieve Twitter IDs and pages of tweets
     
-One of initial obstacels we had to overcome for this project was the Twitter API, which has three types of access levels. The most basic level allows users to retrieve up to 500 thousand Tweets per month and have 25 requests per 15 minutes. These limits would hinder our ability to gather the amount of data we needed so we decided to apply for the elevated access to be able to retrieve up to 2 million Tweets per month and have 50 requests per 15 minutes. However, even then, we had to retrive more than 2 million Tweets so we had to wait a month to finish gathering all our tweets. Additionallly the maximum number of tweets per request is 100 and it would take 15 minutes to retrieve 5,000 tweets. To put it into context, the average number of tweets per Member of Congress in our data set is 2,842 and most politiicians tweeted more than 3,000 for the 30 day time period we used. This means it would take around 10 minutes per legislator. To save time and prevent reaching the request limit, we used csv files to store our data to avoid using the Twitter API to ask for data we previously requested and re-running the code more than necesary. 
+One of the initial obstacles we had to overcome for this project were limits posed by the Twitter API. The API has three types of access levels. The most basic level allows users to retrieve up to 500,000 tweets per month and have 25 requests per 15 minutes. These limits would hinder our ability to gather the amount of data needed so we decided to apply for elevated access. At this level, we were able to retrieve up to 2 million tweets per month and have 50 requests per 15 minutes. However, since we had to retrieve more than 2 million Tweets for our analysis, we had to wait a full month to finish gathering all of them. Additionally the maximum number of tweets per request is 100 and it takes 15 minutes to retrieve 5,000 tweets. To put it into context, the average number of tweets per member of Congress in our data set is 2,842 and most politicians tweeted more than 3,000 for the 30 day time period we used. This means it would take around 10 minutes per legislator. To maximise time-efficiency and avoid reaching the request limit, we decided to use Comma Separated Values (CSV) files to store our data. This would circumvent the need to ask the Twitter API for data we previously requested, as well as re-running the code more than necessary. 
 
-2. Convert json to dataframe
+2. Convert JSON to dataframe
 
-The second major step we took was extracting the necesary data from the Twitter json response by creating a name value pair dictionary.
+The second major step we took was extracting the necessary data from the Twitter JSON response by creating a name value pair dictionary.
 
 <pre><code>def get_tweet_dict(tweet, handle, name):
     metrics = tweet["public_metrics"]
@@ -56,9 +57,9 @@ The second major step we took was extracting the necesary data from the Twitter 
             "like_count": metrics["reply_count"],
             "quote_count": metrics["quote_count"]}</code></pre>
        
-The JSON repsonse is a tree structure and we needed to create columns per tweet, so this function created a name value pair dictionary that could be used to create an array of consistent dictionaries to be used creating our panda dataframe.       
+The JSON response is a tree structure and we needed to create columns per tweet. Therefore, this function created a name value pair dictionary that could be used to create an array of consistent dictionaries to be used creating our panda data-frame.
 
-3. Use spacy to exctract key words from Tweets
+3. Use spacy to extract key words from Tweets
 
 <pre><code>nlp = spacy.load("en_core_web_sm")
 nlp.disable_pipe("parser")
@@ -71,13 +72,13 @@ To make the code run faster, we used the sentencizer rather than the default par
 def get_tokens(doc):
     return [token.lemma_.lower() for token in doc if token.is_alpha and token.pos_ in include_types and token.lemma_.lower() not in exclude_words]</code></pre>
     
-A second barrier we faced was the fact that prepositions, interjections, and conjunctions were the most frequently Tweeted words. However, words like "the", "at", and "in", do not give us context to what the Members of Congress are Tweeting and thinking about. To overcome this, we used Spacy's natural language process to extract only adjectives, nouns, propernouns, verbs and adverbs. Furthermore, to group past tense, plurals, and similar variables of the same word we used the lemma to extract only the base word. For example, "history", "historical", and "histories" would all be grouped into  "history".
+A second barrier we faced was that the most frequently tweeted words were primarily prepositions, interjections, and conjunctions, such as "the", "at", and "in". However, these words do not really give us context as to what the Members of Congress are tweeting and thinking about, and do not offer evidence supporting or opposing our hypothesis. To overcome this, we used Spacy's natural language process to extract only adjectives, nouns, proper-nouns, verbs and adverbs. Furthermore, to group past tense, plurals, and similar variables of the same word we used the lemma to extract only the base word. For example, "history", "historical", and "histories" would all be grouped into  "history". This would ensure we capture the concepts focused and thoughts expressed by the Members, rather than the particular word used.
 
 <pre><code>exclude_words = ["rt", "amp"]</code></pre>
 
-It is important to note that we decided to exclude "rt" because , while it would give us interesting information on how mant times a congressperson re-tweeted in a month, our project only focuses on the individual words of the Tweet. 
+It is important to note that we decided to exclude "rt" because , while it may provide interesting information on the frequency of retweeting in a given month, our project's scope is limited only to the individual words in tweets. 
 
-4. Group and count keywords per user and list all of their Tweets
+4. Group and count keywords per user and list all of their tweets
 
 <pre><code>def add_word_count(row):
     word_freq = Counter(row["key_word_list"])
@@ -86,15 +87,15 @@ It is important to note that we decided to exclude "rt" because , while it would
     df["handle"] = row["handle"]
     return df[["handle","Word","Count"]]</code></pre> 
 
-The last major step was to group all the keywords by Twitter handle and to gather all the keywords from each Tweet into one array to count. Finally, we used a Counter to count the keywords and then find the 50 most frequently used word per legislator, which we used to create a new data frame and csv file. 
+The last major step was to group all the keywords by Twitter handle and to gather all the keywords from each tweet into one array to count. Finally, we used a Counter to count the keywords and then find the 50 most frequently used word per legislator, which we used to create a new data frame and csv file. 
 
 <img width="201" alt="image" src="https://user-images.githubusercontent.com/117990566/211174292-baf767c5-bc0b-41d6-b918-ebdcb75063e0.png">
-This is a snipet of what our csv file looks like. On the far left is Rep. Austin Scott's Twitter handle, in the middle is 5 of his top 50 frequntly used keywords, and then on the far right is how many times each word was used in the time frame. 
+This is a snippet of what our csv file looks like. On the far left is Rep. Austin Scott's Twitter handle. In the middle are 5 of his top 50 frequently used keywords. Finally, on the far right is how many times each word was used in our time frame. 
 
 ---
 **CSV Files:**
 
-Becuase the csv files were too large to upload to github, I have linked the grouped.csv and tweets.csv files here.
+Because the CSV files were too large to upload to GitHub, we linked the grouped.csv and tweets.csv files here.
 
 grouped.csv:
 https://drive.google.com/file/d/1dQA9-0dUVCP86vxsk16WZewj3J7u6yGM/view?usp=drive_web
