@@ -17,7 +17,7 @@
 
 ## Motivations
 
-As the idiom "birds of a feather flock together" suggests, people of the same ideology, hobbies, and interests tend to stick together. Will this idiom ring true for American senators and representatives? To find out, our group analyzed the most frequent words used on Twitter in the past 30 days by all 535 Members of Congress. Will legislators from the same political party Tweet similar words to each other? We predict that not only will legislators Tweet similar words with their associated political party, but Republicans will be more likely to Tweet words like "family", "border", and "steal". This is because Republicans are traditionally known for their "family" values, borders and immigration are key talking points for them, and the word "steal" is associated with right-wing conspiracies. On the other hand, we predict Democrats will frequently use "green" and "rights" because the Democratic party has been focusing their efforts on climate change and increasing rights for minority groups. With an increased polarization in not only Congress but in wider US society, the information we gather from Twitter are important insights into what American legislators have on their minds and whether or not that aligns with the rest of their party.
+As the idiom "birds of a feather flock together" suggests, people of similar ideologies, hobbies, and interests tend to stick together. Will this idiom ring true for American senators and representatives? To find out, our group analyzed the most frequent words used on Twitter in the past 30 days by all 535 Members of Congress. Will legislators from the same political party Tweet similar words to each other? We predict that not only will legislators tweet similar words with their associated political party, but Republicans will be more likely to Tweet words like "family", "border", and "steal". This is because Republicans are generally known for their emphasis on traditional family values (Gronbeck-Tedesco, 2022), border security (Oliphant & Cerda, 2022), and crime (Gambino & Greve, 2022). On the other hand, we predict Democrats will frequently use "green" and "rights" because the Democratic party has been focusing their efforts on climate change (Kennedy & Johnson, 2020) and increasing rights for groups such as racial and sexual minorities (Jones, 2020) . With an increased polarization in not only Congress but in wider US society, the information we gather from Twitter are important insights into what American legislators have on their minds and whether or not that aligns with the rest of their party.
 
 ## Data Collection
 
@@ -125,9 +125,19 @@ Maia created the code to collect the Twitter dataset showing the 50 most common 
 
 ## Citations
 
-Brush, M. (2010, December 21). White House not concerned about new census numbers. Michigan Radio. Retrieved January 6, 2023, from https://www.michiganradio.org/politics-government/2010-12-21/white-house-not-concerned-about-new-census-numbers 
+Brush, M. (2010) White House not concerned about new census numbers, Michigan Radio. Michigan Radio. Available at: https://www.michiganradio.org/politics-government/2010-12-21/white-house-not-concerned-about-new-census-numbers (Accessed: January 21, 2023). 
 
-Smith, K. L. (2022, December 6). Congressional Twitter Accounts. San Deigo. Retrieved January 6, 2023, from https://ucsd.libguides.com/congress_twitter. 
+Gambino, L. and Greve, J.E. (2022) Democrats try to flip narrative amid barrage of 'soft on Crime' attack ads, The Guardian. Guardian News and Media. Available at: https://www.theguardian.com/us-news/2022/oct/27/republicans-crime-midterm-election (Accessed: January 21, 2023). 
+
+Gronbeck-Tedesco, J.A. (2022) The GOP has revived its 1970s "Traditional family values" playbook, Slate Magazine. Slate. Available at: https://slate.com/news-and-politics/2022/04/the-gops-new-american-family-values.html (Accessed: January 21, 2023). 
+
+Jones, B. (2020) Democrats far more likely than Republicans to see discrimination against blacks, not whites, Pew Research Center. Pew Research Center. Available at: https://www.pewresearch.org/fact-tank/2019/11/01/democrats-far-more-likely-than-republicans-to-see-discrimination-against-blacks-not-whites/ (Accessed: January 21, 2023). 
+
+Kennedy, B. and Johnson, C. (2020) More Americans see climate change as a priority, but Democrats are much more concerned than Republicans, Pew Research Center. Pew Research Center. Available at: https://www.pewresearch.org/fact-tank/2020/02/28/more-americans-see-climate-change-as-a-priority-but-democrats-are-much-more-concerned-than-republicans/ (Accessed: January 21, 2023). 
+
+Oliphant, J.B. and Cerda, A. (2022) Republicans and Democrats have different top priorities for U.S. immigration policy, Pew Research Center. Pew Research Center. Available at: https://www.pewresearch.org/fact-tank/2022/09/08/republicans-and-democrats-have-different-top-priorities-for-u-s-immigration-policy/ (Accessed: January 21, 2023). 
+
+Smith, K.L. (2022) Libguides: Congressional twitter accounts: Home, Home - Congressional Twitter Accounts - LibGuides at University of California San Diego. University of California San Diego. Available at: https://ucsd.libguides.com/congress_twitter (Accessed: January 21, 2023). 
 
 # THINGS TO DO : [delete later]
 ## grammar,  organize the files better
