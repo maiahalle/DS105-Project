@@ -123,6 +123,9 @@ Maia created the code to collect the Twitter dataset showing the 50 most common 
 **Amara:**
 
 **Sarmad:**
+Sarmad 
+GitHub 
+Fact-checked and cited all of the substantive claims made about the Democrats and Republicans in the README.md. He also copy-edited and reviewed the README.md in terms of cohesiveness.
 
 ## Citations
 
