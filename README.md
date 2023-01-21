@@ -144,4 +144,4 @@ Oliphant, J.B. and Cerda, A. (2022) Republicans and Democrats have different top
 Smith, K.L. (2022) Libguides: Congressional twitter accounts: Home, Home - Congressional Twitter Accounts - LibGuides at University of California San Diego. University of California San Diego. Available at: https://ucsd.libguides.com/congress_twitter (Accessed: January 21, 2023). 
 
 # THINGS TO DO : [delete later]
-## grammar,  organize the files better
+## Organize the files better, add executive summary 
