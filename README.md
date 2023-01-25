@@ -1,9 +1,9 @@
 # Twitter Birds of a Feather Flock Together: Analyzing American Legislator's Frequent Used Words in Tweets
 
 ## Index
-1. Abstract
+1. [Abstract](https://github.com/maiahalle/DS105-Project/blob/main/README.md#abstract) 
 2. [Motivations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#motivations) 
-3. Key Questions
+3. [Key Questions and Hypotheses](https://github.com/maiahalle/DS105-Project/blob/main/README.md#key-questions-and-hypotheses) 
 4. [Data Collection](https://github.com/maiahalle/DS105-Project/blob/main/README.md#data-collection)
     - Data Set
     - Code Explanation
@@ -33,7 +33,7 @@ Some of us also had specific reasons to be interested in this particular topic. 
 
 In doing research for this project, we were surprised to learn that such an analysis had, to our knowledge, not been conducted yet. In contributing this project, we hope to add to knowledge about political polarisation in the US and grow awareness about the potentially salient role played by words, language and Twitter in the political landscape. 
 
-## Key Questions & Hypotheses 
+## Key Questions and Hypotheses 
 
 Firstly, we hypothesise that legislators from identical parties will have more commonalities in words used than legislators from differing parties. While we started on this hypothesis based on intuition, our hypothesis would later be informed by some existing empirical evidence that individuals from similar groups do tend to use similar words (Milroy & Margrain, 1980; Van Swol & Kane, 2018).
 
