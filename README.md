@@ -1,23 +1,45 @@
 # Twitter Birds of a Feather Flock Together: Analyzing American Legislator's Frequent Used Words in Tweets
 
 ## Index
-1. [Motivations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#motivations) 
-2. [Data Collection](https://github.com/maiahalle/DS105-Project/blob/main/README.md#data-collection)
+1. Abstract
+2. [Motivations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#motivations) 
+3. Key Questions
+4. [Data Collection](https://github.com/maiahalle/DS105-Project/blob/main/README.md#data-collection)
     - Data Set
     - Code Explanation
     - CSV Files
-3. [Exploratory Data Analysis](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
-4. [Findings](https://github.com/maiahalle/DS105-Project/blob/main/README.md#findings)
-5. [Conclusion](https://github.com/maiahalle/DS105-Project/blob/main/README.md#conclusion)
-6. [Contributions](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
+5. [Exploratory Data Analysis](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
+6. [Findings](https://github.com/maiahalle/DS105-Project/blob/main/README.md#findings)
+7. [Conclusion](https://github.com/maiahalle/DS105-Project/blob/main/README.md#conclusion)
+8. [Contributions](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
     - Maia
     - Amara
     - Sarmad
-7. [Citations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#citations)
+9. [Bibliograpy](https://github.com/maiahalle/DS105-Project/blob/main/README.md#bibliography)
+
+## Abstract
+
+This project explores words used in tweets put out by members of the United States Congress. We aimed to verify whether or not there are commonalities in words tweeted by legislators from the same political party and whether there were any disparities between Republicans and Democrats in terms of words frequently used. Our hypotheses were: 
+
+To test our hypothesis, we used Twitter's API, with elevated access, to gain access to almost 3 million tweets posted in the past 30 days from all 535 legislators in the US Congress. We then extracted key words through spacy, excluding certain words (such as prepositions), then grouped them by Twitter handle and then counted the 50 most frequent words used by a given legislator. **Talk about visualisations and results then**. 
+
+Our findings provide evidence that **talk about whether or not our three hypotheses are supported** 
 
 ## Motivations
 
-As the idiom "birds of a feather flock together" suggests, people of similar ideologies, hobbies, and interests tend to stick together. Will this idiom ring true for American senators and representatives? To find out, our group analysed the most frequent words used on Twitter in the past 30 days by all 535 Members of the United States Congress to verify whether or not legislators from the same political party tweet similar words to each other. Our hypothesis is that not only will legislators tweet similar words with their associated political party, but Republicans will be more likely to tweet words like "family", "border", and "steal". This is because Republicans are generally known for their emphasis on traditional family values (Gronbeck-Tedesco, 2022), border security (Oliphant & Cerda, 2022), and crime (Gambino & Greve, 2022). On the other hand, we predict Democrats will more frequently use words such as  "green" and "rights" because the Democratic party has been focusing their efforts on climate change (Kennedy & Johnson, 2020) and increasing rights for groups such as racial and sexual minorities (Jones, 2020), respectively. With increased polarization in not only Congress but the wider US society, the information we gather from Twitter are important insights into what American legislators have on their minds and whether or not that aligns with the rest of their party. We chose this for our group project not only to gather evidence supporting or disproving our hypothesis, but also to satisfy our individual curiosities. For example, one of our members, Maia, is American and wanted to gain further insight into the polarisation in their country, while Sarmad studies the philosophy of language and wanted to learn more about the relationship between words, thoughts and political ideologies.
+Our group chose this topic area our final project for several reasons. All of our group members were increasingly aware of significant polarization in not only the US Congress (Jeong & Lowry, 2019) but also the wider US society (Iyengar et al., 2019). Having conducted their studies during the COVID-19 pandemic, an era known for what felt like unprecedented political polarisation on multiple policy positions in the US, our group developed a natural interest onto what American legislators have on their minds, whether or not that aligns with their party, and whether or not that contradicts members of other parties. 
+
+Some of us also had specific reasons to be interested in this particular topic. For example, one of our members, Maia, is American and wanted to gain further insight into the polarisation in her country, while Sarmad studies the philosophy of language and wanted to learn more about the relationship between words, thoughts and political ideologies.
+
+In doing research for this project, we were surprised to learn that such an analysis had, to our knowledge, not been conducted yet. In contributing this project, we hope to add to knowledge about political polarisation in the US and grow awareness about the potentially salient role played by words, language and Twitter in the political landscape. 
+
+## Key Questions & Hypotheses 
+
+Firstly, we hypothesise that legislators from identical parties will have more commonalities in words used than legislators from differing parties. While we started on this hypothesis based on intuition, our hypothesis would later be informed by some existing empirical evidence that individuals from similar groups do tend to use similar words (Milroy & Margrain, 1980; Van Swol & Kane, 2018).
+
+Secondly, we hypothesise that Democrats will be more likely to use words such as "green" and "rights". Our hypothesis was informed by the fact that the Democratic party is relatively more focused than Republicans on climate change (Kennedy & Johnson, 2020) and increasing rights for groups such as racial and sexual minorities (Jones, 2020), respectively. 
+
+Thirdly and lastly, we hypothesise that Republicans will be more likely to use words such as "family" and "border". This is because Republicans are generally known for their emphasis on traditional family values (Gronbeck-Tedesco, 2022), border security (Oliphant & Cerda, 2022), and crime (Gambino & Greve, 2022).
 
 ## Data Collection
 
@@ -123,9 +145,9 @@ Maia created the code to collect the Twitter dataset showing the 50 most common 
 **Amara:**
 
 **Sarmad:**
-Fact-checked and cited all of the substantive claims made about the Democrats and Republicans in the README.md. He also copy-edited and reviewed the README.md in terms of cohesiveness.
+Sarmad created, edited and formatted the web-page. He wrote the Executive Summary and Key Questions sections of the README.md. He also fact-checked and cited all of the substantive claims made about the Democrats and Republicans throughout the README.md and created the Bibliography below. Lastly, he copy-edited the entire README.md to ensure cohesiveness.
 
-## Citations
+## Bibliography
 
 Brush, M. (2010) White House not concerned about new census numbers, Michigan Radio. Michigan Radio. Available at: https://www.michiganradio.org/politics-government/2010-12-21/white-house-not-concerned-about-new-census-numbers (Accessed: January 21, 2023). 
 
@@ -133,13 +155,18 @@ Gambino, L. and Greve, J.E. (2022) Democrats try to flip narrative amid barrage 
 
 Gronbeck-Tedesco, J.A. (2022) The GOP has revived its 1970s "Traditional family values" playbook, Slate Magazine. Slate. Available at: https://slate.com/news-and-politics/2022/04/the-gops-new-american-family-values.html (Accessed: January 21, 2023). 
 
+Iyengar, S. et al. (2019) “The origins and consequences of affective polarization in the United States,” Annual Review of Political Science, 22(1), pp. 129–146. Available at: https://doi.org/10.1146/annurev-polisci-051117-073034. 
+
+Jeong, G.-H. and Lowry, W. (2019) “The polarisation of energy policy in the US congress,” Journal of Public Policy, 41(1), pp. 17–41. Available at: https://doi.org/10.1017/s0143814x19000175. 
+
 Jones, B. (2020) Democrats far more likely than Republicans to see discrimination against blacks, not whites, Pew Research Center. Pew Research Center. Available at: https://www.pewresearch.org/fact-tank/2019/11/01/democrats-far-more-likely-than-republicans-to-see-discrimination-against-blacks-not-whites/ (Accessed: January 21, 2023). 
 
 Kennedy, B. and Johnson, C. (2020) More Americans see climate change as a priority, but Democrats are much more concerned than Republicans, Pew Research Center. Pew Research Center. Available at: https://www.pewresearch.org/fact-tank/2020/02/28/more-americans-see-climate-change-as-a-priority-but-democrats-are-much-more-concerned-than-republicans/ (Accessed: January 21, 2023). 
+
+Milroy, L. and Margrain, S. (1980) “Vernacular language loyalty and Social Network,” Language in Society, 9(1), pp. 43–70. Available at: https://doi.org/10.1017/s0047404500007788. 
 
 Oliphant, J.B. and Cerda, A. (2022) Republicans and Democrats have different top priorities for U.S. immigration policy, Pew Research Center. Pew Research Center. Available at: https://www.pewresearch.org/fact-tank/2022/09/08/republicans-and-democrats-have-different-top-priorities-for-u-s-immigration-policy/ (Accessed: January 21, 2023). 
 
 Smith, K.L. (2022) Libguides: Congressional twitter accounts: Home, Home - Congressional Twitter Accounts - LibGuides at University of California San Diego. University of California San Diego. Available at: https://ucsd.libguides.com/congress_twitter (Accessed: January 21, 2023). 
 
-# THINGS TO DO : [delete later]
-## Organize the files better, add executive summary 
+Van Swol, L.M. and Kane, A.A. (2018) “Language and group processes: An integrative, interdisciplinary review,” Small Group Research, 50(1), pp. 3–38. Available at: https://doi.org/10.1177/1046496418785019. 
