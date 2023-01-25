@@ -47,6 +47,7 @@ Thirdly and lastly, we hypothesise that Republicans will be more likely to use w
 We collected tweets from all of the current Congresspeople's Twitter accounts from the past 30 days. This amounted to almost 3 million tweets. We got the list of Twitter handles from a Excel spreadsheet titled Congressional Twitter Accounts created by the [University of California San Diego (UCSD)](https://ucsd.libguides.com/congress_twitter) (Smith, 2022). Our data set is comprised of 223 Democrats (including 4 Delegates) and 215 Republicans (including 1 Delegate and the Resident Commissioner of Puerto Rico), and 3 vacant seats. 
 
 <img width="640" alt="Screen Shot 2023-01-04 at 8 22 27 PM" src="https://user-images.githubusercontent.com/117990566/210680386-51fec2fc-0a3b-4e0a-a43d-f653efc48b63.png">
+
 This map illustrates the distribution of Congressional representatives throughout all 50 states.
 
 ---
@@ -54,13 +55,13 @@ This map illustrates the distribution of Congressional representatives throughou
 The code we used to gather our data can be divided into four key sections. First, implementing the twitter API to make queries. Second, converting the twitter JSON response to a dataframe. Third, extracting key words from each tweet. Lastly, grouping and counting keywords per user.
 
 
-1. Implement the Twitter API to retrieve Twitter IDs and pages of tweets
+First, we implement the Twitter API to retrieve Twitter IDs and pages of tweets:
     
 One of the initial obstacles we had to overcome for this project were limits posed by the Twitter API. The API has three types of access levels. The most basic level allows users to retrieve up to 500,000 tweets per month and have 25 requests per 15 minutes. These limits would hinder our ability to gather the amount of data needed so we decided to apply for elevated access. At this level, we were able to retrieve up to 2 million tweets per month and have 50 requests per 15 minutes. However, since we had to retrieve more than 2 million Tweets for our analysis, we had to wait a full month to finish gathering all of them. Additionally the maximum number of tweets per request is 100 and it takes 15 minutes to retrieve 5,000 tweets. To put it into context, the average number of tweets per member of Congress in our data set is 2,842 and most politicians tweeted more than 3,000 for the 30 day time period we used. This means it would take around 10 minutes per legislator. To maximise time-efficiency and avoid reaching the request limit, we decided to use Comma Separated Values (CSV) files to store our data. This would circumvent the need to ask the Twitter API for data we previously requested, as well as re-running the code more than necessary. 
 
-2. Convert JSON to dataframe
+Second, we convert JSON to dataframe:
 
-The second major step we took was extracting the necessary data from the Twitter JSON response by creating a name value pair dictionary.
+We had to extract the necessary data from the Twitter JSON response by creating a name value pair dictionary.
 
 <pre><code>def get_tweet_dict(tweet, handle, name):
     metrics = tweet["public_metrics"]
@@ -81,7 +82,7 @@ The second major step we took was extracting the necessary data from the Twitter
        
 The JSON response is a tree structure and we needed to create columns per tweet. Therefore, this function created a name value pair dictionary that could be used to create an array of consistent dictionaries to be used creating our panda data-frame.
 
-3. Use spacy to extract key words from Tweets
+Third, use spacy to extract key words from Tweets
 
 <pre><code>nlp = spacy.load("en_core_web_sm")
 nlp.disable_pipe("parser")
@@ -100,7 +101,7 @@ A second barrier we faced was that the most frequently tweeted words were primar
 
 It is important to note that we decided to exclude "rt" because , while it may provide interesting information on the frequency of retweeting in a given month, our project's scope is limited only to the individual words in tweets. 
 
-4. Group and count keywords per user and list all of their tweets
+Fourth, we group and count keywords per user and list all of their tweets
 
 <pre><code>def add_word_count(row):
     word_freq = Counter(row["key_word_list"])
