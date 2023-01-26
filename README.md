@@ -153,10 +153,12 @@ What is the range and distribution of the most relevant variables?
 
 ## Conclusion
 <img width="646" alt="image" src="https://user-images.githubusercontent.com/114494959/214910742-7e20389a-0a29-4e97-810d-af996bb39a9c.png">
-{% figure caption:"Le logo de **Jekyll** et son clin d'oeil à Robert Louis Stevenson" %}
-    ![Le logo de Jekyll](<img width="646" alt="image" src="https://user-images.githubusercontent.com/114494959/214910742-7e20389a-0a29-4e97-810d-af996bb39a9c.png">)
-{% endfigure %}
-We definitely saw disparities between the langiage used by the democrats as opposed to the language used by the republicans.
+Wordcloud of the democrats most frequently tweeted words.
+
+<img width="639" alt="image" src="https://user-images.githubusercontent.com/114494959/214911469-f3a67075-b16c-473f-bd96-24d4c3936200.png">
+Wordcloud of the republicans most frequently tweeted words.
+
+*We definitely saw disparities between the langiage used by the democrats as opposed to the language used by the republicans. Many of our observations aligned with our initial hypotheses concerning the ideologies that each party would be expressing through their language and we also gained insight into the strategic side of politicians' tweets. If we were to continue our investigation, we would be interested to dicover the relationship between the nature of Twitter and the nature of its users (e.g. US politicians, as in this case), in terms of which influences the other more stongly (like the chicken or the egg question) or whether it is a mutual shaping of behaviour.*
 
 ## Contributions
 
@@ -164,6 +166,7 @@ We definitely saw disparities between the langiage used by the democrats as oppo
 Maia created the code to collect the Twitter dataset showing the 50 most common used words per twitter handles. She also wrote the Index, Motivation, Data Collection, and Citations sections of the README.md.
 
 **Amara:**
+*Amara analysed the data, transforming it into multiple more easily useable dataframes. She then created some more easily interpretable bar graphs and wordclouds. She interpreted the data and drew conclusions based on our observations.*
 
 **Sarmad:**
 Sarmad created, edited and formatted the web-page. He wrote the Executive Summary and Key Questions sections of the README.md. He also fact-checked and cited all of the substantive claims made about the Democrats and Republicans throughout the README.md and created the Bibliography below. Lastly, he copy-edited the entire README.md to ensure cohesiveness.
