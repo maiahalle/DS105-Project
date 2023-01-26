@@ -136,8 +136,9 @@ What is the range and distribution of the most relevant variables?
 
 ## Findings
 *Below are the bar graphs showing the 50 most frequesntly used words for each political party:*
-
+Democrats:
 <img width="639" alt="image" src="https://user-images.githubusercontent.com/114494959/214894947-efa4eb3a-9b94-49ae-8bc8-bc5bcf3921e5.png">
+Republicans:
 <img width="663" alt="image" src="https://user-images.githubusercontent.com/114494959/214895132-155468fc-544d-4011-b62d-3a68e4ce586f.png">
 
 *In line with our hypotheses, we found that the most common words used by each party did, in fact, align with the known political ideologies of each respectively. To illustrate this, see below for similar plots including only words from the top 50 of each party which were usd exclusively by that party:*
