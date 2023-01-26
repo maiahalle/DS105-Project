@@ -152,11 +152,11 @@ What is the range and distribution of the most relevant variables?
 *Furthermore, the fact that both parties have resorted to this method tells us something about the users of Twitter. Perpetuated hate speech and echo chambers have been an issue on Twitter for quite some time, and some expect this to get worse after Elon Musk's recent takeover. Is it the nature of Twitter and it's algorithms which cause this and mean that this tactic of attacking the opposition has been deemed most successful by the two main political parties in the US? Or is it perhaps that these politicians are the part of the cause of Twitter's problem? This may be an interesting topic for further research, however, for now, we have found that US politicians generally see this approach as an efficient enough way to rally support for their party that it is one of the most frequentoccurences in their Tweets.*
 
 ## Conclusion
+Wordcloud of the democrats most frequently tweeted words:
 <img width="646" alt="image" src="https://user-images.githubusercontent.com/114494959/214910742-7e20389a-0a29-4e97-810d-af996bb39a9c.png">
-Wordcloud of the democrats most frequently tweeted words.
 
+Wordcloud of the republicans most frequently tweeted words:
 <img width="639" alt="image" src="https://user-images.githubusercontent.com/114494959/214911469-f3a67075-b16c-473f-bd96-24d4c3936200.png">
-Wordcloud of the republicans most frequently tweeted words.
 
 *We definitely saw disparities between the langiage used by the democrats as opposed to the language used by the republicans. Many of our observations aligned with our initial hypotheses concerning the ideologies that each party would be expressing through their language and we also gained insight into the strategic side of politicians' tweets. If we were to continue our investigation, we would be interested to dicover the relationship between the nature of Twitter and the nature of its users (e.g. US politicians, as in this case), in terms of which influences the other more stongly (like the chicken or the egg question) or whether it is a mutual shaping of behaviour.*
 
