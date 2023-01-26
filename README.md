@@ -143,7 +143,7 @@ Democrats:
 
 Republicans:
 
-<img width="621" alt="image" src="https://user-images.githubusercontent.com/114494959/214915544-b5207910-7693-46ca-95e6-21ea78eab13b.png">
+<img width="619" alt="image" src="https://user-images.githubusercontent.com/114494959/214916308-611d41a5-7e4a-4c9d-a040-9eb91b714aab.png">
 
 *In line with our hypotheses, we found that the most common words used by each party did, in fact, align with the known political ideologies of each respectively. To illustrate this, see below for similar plots including only words from the top 50 of each party which were usd exclusively by that party:*
 
@@ -153,7 +153,7 @@ Democrats:
 
 Republicans:
 
-<img width="630" alt="image" src="https://user-images.githubusercontent.com/114494959/214915882-833b9475-fa78-42c8-91e9-e9a2920116d7.png">
+<img width="620" alt="image" src="https://user-images.githubusercontent.com/114494959/214916182-5f8902a1-459f-4b56-85d0-a51c57a998e1.png">
 
 *These plots show the stark differences between the online approaches of the republicands and the democrats. Firstly, we can see differences in language based on ideology. In comparison, where we see "border" as a top word for the republicans, we see "care" and "protect" as top words for democrats, illustrating the republicans fixation on keeping strong borders and keeping people out of the country, in contrast to the democrats values of looking after and protecting the people who are already there. Where we see the word "business" being frequntly used by republicans, we see the word "woman" as a top word for the democrats. The world of business in the US is highly dominated by men and the US still suffers from a statistically significant gender pay gap in every state. Whilst the republicans are tweeting about how to improve business (for men), the democrats seem to be spreading ideologies of equality by increasing female representation in their tweets, demonstrating the democrats more progressive ideals.*
 
