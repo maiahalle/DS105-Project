@@ -137,21 +137,21 @@ What is the range and distribution of the most relevant variables?
 ## Findings
 *Below are the bar graphs showing the 50 most frequesntly used words for each political party:*
 
-Democrats:
+*Democrats:*
 
 <img width="610" alt="image" src="https://user-images.githubusercontent.com/114494959/214915647-380281bf-695d-46e9-9f4e-dd665c399cb5.png">
 
-Republicans:
+*Republicans:*
 
 <img width="619" alt="image" src="https://user-images.githubusercontent.com/114494959/214916308-611d41a5-7e4a-4c9d-a040-9eb91b714aab.png">
 
 *In line with our hypotheses, we found that the most common words used by each party did, in fact, align with the known political ideologies of each respectively. To illustrate this, see below for similar plots including only words from the top 50 of each party which were usd exclusively by that party:*
 
-Democrats:
+*Democrats:*
 
 <img width="591" alt="image" src="https://user-images.githubusercontent.com/114494959/214915778-0e3480d0-58d4-4bcd-b62b-576c8245734c.png">
 
-Republicans:
+*Republicans:*
 
 <img width="620" alt="image" src="https://user-images.githubusercontent.com/114494959/214916182-5f8902a1-459f-4b56-85d0-a51c57a998e1.png">
 
@@ -162,10 +162,10 @@ Republicans:
 *Furthermore, the fact that both parties have resorted to this method tells us something about the users of Twitter. Perpetuated hate speech and echo chambers have been an issue on Twitter for quite some time, and some expect this to get worse after Elon Musk's recent takeover. Is it the nature of Twitter and it's algorithms which cause this and mean that this tactic of attacking the opposition has been deemed most successful by the two main political parties in the US? Or is it perhaps that these politicians are the part of the cause of Twitter's problem? This may be an interesting topic for further research, however, for now, we have found that US politicians generally see this approach as an efficient enough way to rally support for their party that it is one of the most frequentoccurences in their Tweets.*
 
 ## Conclusion
-Wordcloud of the democrats most frequently tweeted words:
+*Wordcloud of the democrats most frequently tweeted words:*
 <img width="646" alt="image" src="https://user-images.githubusercontent.com/114494959/214910742-7e20389a-0a29-4e97-810d-af996bb39a9c.png">
 
-Wordcloud of the republicans most frequently tweeted words:
+*Wordcloud of the republicans most frequently tweeted words:*
 <img width="639" alt="image" src="https://user-images.githubusercontent.com/114494959/214911469-f3a67075-b16c-473f-bd96-24d4c3936200.png">
 
 *We definitely saw disparities between the langiage used by the democrats as opposed to the language used by the republicans. Many of our observations aligned with our initial hypotheses concerning the ideologies that each party would be expressing through their language and we also gained insight into the strategic side of politicians' tweets. If we were to continue our investigation, we would be interested to dicover the relationship between the nature of Twitter and the nature of its users (e.g. US politicians, as in this case), in terms of which influences the other more stongly (like the chicken or the egg question) or whether it is a mutual shaping of behaviour.*
@@ -184,6 +184,8 @@ Sarmad created, edited and formatted the web-page. He wrote the Executive Summar
 ## Bibliography
 
 Brush, M. (2010) White House not concerned about new census numbers, Michigan Radio. Michigan Radio. Available at: https://www.michiganradio.org/politics-government/2010-12-21/white-house-not-concerned-about-new-census-numbers (Accessed: January 21, 2023). 
+
+*Frenkel, S. and Conger, K. (2022) Hate Speech’s Rise on Twitter Is Unprecedented, Researchers Find. Available at: https://www.nytimes.com/2022/12/02/technology/twitter-hate-speech.html (Accessed: January 26, 2023).*
 
 Gambino, L. and Greve, J.E. (2022) Democrats try to flip narrative amid barrage of 'soft on Crime' attack ads, The Guardian. Guardian News and Media. Available at: https://www.theguardian.com/us-news/2022/oct/27/republicans-crime-midterm-election (Accessed: January 21, 2023). 
 
@@ -204,3 +206,5 @@ Oliphant, J.B. and Cerda, A. (2022) Republicans and Democrats have different top
 Smith, K.L. (2022) Libguides: Congressional twitter accounts: Home, Home - Congressional Twitter Accounts - LibGuides at University of California San Diego. University of California San Diego. Available at: https://ucsd.libguides.com/congress_twitter (Accessed: January 21, 2023). 
 
 Van Swol, L.M. and Kane, A.A. (2018) “Language and group processes: An integrative, interdisciplinary review,” Small Group Research, 50(1), pp. 3–38. Available at: https://doi.org/10.1177/1046496418785019. 
+
+*Wisniewski, M. (2022) What Is the Gender Wage Gap in Your State? Available at: https://www.census.gov/library/stories/2022/03/what-is-the-gender-wage-gap-in-your-state.html#:~:text=The%20gender%2Dbased%20wage%20gap,2019%20American%20Community%20Survey%20(ACS) (Accessed: January 26, 2023).*
