@@ -136,7 +136,7 @@ What is the range and distribution of the most relevant variables?
 
 
 ## Findings
-We visualise our results through bar graphs and word clouds. These show the 50 most frequently used words for each political party:
+We visualise our results through bar graphs and word clouds.
 
 **Below: Figure 1a: The 50 most frequently used words by members of the Democrat Party**
 
