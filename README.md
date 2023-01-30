@@ -1,5 +1,3 @@
-# Twitter Birds of a Feather Flock Together: Analyzing American Legislator's Frequent Used Words in Tweets
-
 ## Index
 1. [Abstract](https://github.com/maiahalle/DS105-Project/blob/main/README.md#abstract) 
 2. [Motivations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#motivations) 
@@ -8,14 +6,13 @@
     - Data Set
     - Code Explanation
     - CSV Files
-5. [Exploratory Data Analysis](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
-6. [Findings](https://github.com/maiahalle/DS105-Project/blob/main/README.md#findings)
-7. [Conclusion](https://github.com/maiahalle/DS105-Project/blob/main/README.md#conclusion)
-8. [Contributions](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
+5. [Findings](https://github.com/maiahalle/DS105-Project/blob/main/README.md#findings)
+6. [Conclusion](https://github.com/maiahalle/DS105-Project/blob/main/README.md#conclusion)
+7. [Contributions](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
     - Maia
     - Amara
     - Sarmad
-9. [Bibliograpy](https://github.com/maiahalle/DS105-Project/blob/main/README.md#bibliography)
+8. [Bibliograpy](https://github.com/maiahalle/DS105-Project/blob/main/README.md#bibliography)
 
 ## Abstract
 
@@ -127,14 +124,6 @@ https://drive.google.com/file/d/1dQA9-0dUVCP86vxsk16WZewj3J7u6yGM/view?usp=drive
 tweets.csv:
 https://drive.google.com/file/d/1PgatNy2y8jExcTvWxDlkcaUwN9YTWHFV/view?usp=drive_web
 
-## Exploratory Data Analysis
-
-What is in the data? 
-What does it look like in general? 
-How big are your datasets? 
-What is the range and distribution of the most relevant variables?
-
-
 ## Findings
 We visualise our results through bar graphs and word clouds.
 
@@ -164,11 +153,11 @@ We visualise our results through bar graphs and word clouds.
 
 The figures above demonstrate considerable evidence for our hypotheses. In line with H1, we find that Democrats are more likely to use words that align with their party's political ideologies. For instance, as we predicted, we find that the Democrats use rights-based language such as "care" and "protect". Similarly, we find evidence for H2, with Republicans more likely to use words such as "border". However, we also find additional language patterns that we did not protect. For example, Republicans frequently use the word "business", which may be linked to their policies of protecting businesses and the free market (Furhmann, 2022). Similarly, we find the word "woman" as a top word for Democrats, which makes sense given the Democrats' ideological goal of empowering woman by taking policy positions such as reducing the gender pay gap and increasing feamle representation (Horowitz, 2020).
 
-Moreover, another thing we had not considered was the potential usage of language as part of a party's election tactics. For example, we see that 'Biden' is a very frequently used word by the Republicans, and 'Trump' is frequently used by the Democrats, rather than vice versa. This gives us an insight into the parties' approaches to gaining support. It is safe to assume that each side is not using the name of the other's leader in a positive light, so we can only gather than each party adopts the tactic of tearing down the other side in order to gain support from the public. This is not a totally even split, 'Biden' was the number one most frequently used word exclusively by the Republicans, whereas 'Trump' was down at number eight for the Democrats. Nonetheless, both parties seem to have engaged in this strategy. Nonetheless, that 'Biden' was the most frequent word for the Republicans may suggest that Republicans may have spent more time (or more words) trying to discuss individuals in the Democratic Party, rather than talking about any one issue which is central to their policies and ideologies.
+Moreover, another thing we had not considered was the potential usage of language as part of a party's election tactics. For example, we see that 'Biden' is a very frequently used word by the Republicans, and 'Trump' is frequently used by the Democrats, rather than vice versa. This gives us an insight into the parties' approaches to gaining support. It is safe to assume that each side is not using the name of the other's leader in a positive light, so we can only gather than each party adopts the tactic of tearing down the other side in order to gain support from the public. This is not a totally even split, 'Biden' was the number one most frequently used word exclusively by the Republicans, whereas 'Trump' was down at number eight for the Democrats. Noth parties seem to have engaged in this strategy. 'Biden' being the most frequent word for the Republicans may suggest that Republicans may have spent more time (or more words) trying to discuss individuals in the Democratic Party, rather than talking about any one issue which is central to their policies and ideologies.
 
 This usage of language may also tell us something about the users of Twitter. Perpetuated hate speech and echo chambers have been an issue on Twitter for quite some time (Frenkel & Conger, 2022), and some expect this to get worse after Elon Musk's recent purchase of Twitter. Is it the nature of Twitter and it's algorithms which cause this and mean that this tactic of attacking the opposition has been deemed most successful by the two main political parties in the US? Or is it perhaps that these politicians are the part of the cause of Twitter's problem? This may be an interesting topic for further research, however, for now, we have found that US politicians generally see this approach as an efficient enough way to rally support for their party that it is one of the most frequent occurences in their tweets.
 
-Despite our overall considerabl evidence, however our hypotheses are not fully substantiated. We did not find evidence of the Democrats being more likely to use, for example, climate-focused language, nor did we find the Republicans more focused on crime. This suggests that there may be certain policy areas that are more important or perhaps more polarised that legislators feel a greater need to discuss on Twitter. Alternatively, it may simply be that temporal factors play a role here - for example, closer to a climate-focused protest or event, legislators may discuss climate more on Twitter.
+Despite our overall considerable evidence, our hypotheses are not fully substantiated. We did not find evidence of the Democrats being more likely to use, for example, climate-focused language, nor did we find the Republicans more focused on crime. This suggests that there may be certain policy areas that are more important or perhaps more polarised that legislators feel a greater need to discuss on Twitter. Alternatively, it may simply be that temporal factors play a role here - for example, closer to a climate-focused protest or event, legislators may discuss climate more on Twitter. 
 
 
 ## Conclusion
@@ -178,13 +167,13 @@ Overall, we saw considerable disparities between the language used by the Democr
 ## Contributions
 
 **Maia:**
-Maia created the code to collect the Twitter dataset showing the 50 most common used words per twitter handles. She also wrote the Index, Motivation, Data Collection, and Citations sections of the README.md.
+Maia created the code to collect the Twitter dataset showing the 50 most common used words per twitter handles. She also wrote the Index, Motivation, Data Collection, and Bibliography sections of the README.md. Lastly, she created the webpage and added a theme.
 
 **Amara:**
 *Amara analysed the data, transforming it into multiple more easily useable dataframes. She then created some more easily interpretable bar graphs and wordclouds. She interpreted the data and drew conclusions based on our observations.*
 
 **Sarmad:**
-Sarmad wrote the Abstract, Motivations, Key Questions & Hypotheses, and Bibliography sections of the README.md, while also copy-editing the rest of it to ensure cohesiveness and consistency. He also did empirical research for all the substantive claims made about the Democrats and Republicans throughout the README-md. Lastly, he created the web-page for this project.
+Sarmad wrote the Abstract, Motivations, Key Questions & Hypotheses, and Bibliography sections of the README.md, while also copy-editing the rest of it to ensure cohesiveness and consistency. He also did empirical research for all the substantive claims made about the Democrats and Republicans throughout the README-md. 
 
 ## Bibliography
 
