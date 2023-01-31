@@ -1,5 +1,3 @@
-# Twitter Birds of a Feather Flock Together: Analyzing American Legislator's Frequent Used Words in Tweets
-
 ## Index
 1. [Abstract](https://github.com/maiahalle/DS105-Project/blob/main/README.md#abstract) 
 2. [Motivations](https://github.com/maiahalle/DS105-Project/blob/main/README.md#motivations) 
@@ -8,43 +6,44 @@
     - Data Set
     - Code Explanation
     - CSV Files
-5. [Exploratory Data Analysis](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
-6. [Findings](https://github.com/maiahalle/DS105-Project/blob/main/README.md#findings)
-7. [Conclusion](https://github.com/maiahalle/DS105-Project/blob/main/README.md#conclusion)
-8. [Contributions](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
+5. [Findings](https://github.com/maiahalle/DS105-Project/blob/main/README.md#findings)
+6. [Conclusion](https://github.com/maiahalle/DS105-Project/blob/main/README.md#conclusion)
+7. [Contributions](https://github.com/maiahalle/DS105-Project/blob/main/README.md#exploratory-data-analysis)
     - Maia
     - Amara
     - Sarmad
-9. [Bibliograpy](https://github.com/maiahalle/DS105-Project/blob/main/README.md#bibliography)
+8. [Bibliograpy](https://github.com/maiahalle/DS105-Project/blob/main/README.md#bibliography)
 
 ## Abstract
 
-This project explores words used in tweets put out by members of the United States Congress. We aimed to verify whether or not there are commonalities in words tweeted by legislators from the same political party and whether there were any disparities between Republicans and Democrats in terms of words frequently used. Our hypotheses were: 
+This project explores words used in tweets put out by members of the United States Congress. We aimed to explore whether there were any disparities between Republicans and Democrats in terms of words frequently used.
 
-To test our hypothesis, we used Twitter's API, with elevated access, to gain access to almost 3 million tweets posted in the past 30 days from all 535 legislators in the US Congress. We then extracted key words through spacy, excluding certain words (such as prepositions), then grouped them by Twitter handle and then counted the 50 most frequent words used by a given legislator. **Talk about visualisations and results then**. 
+We used Twitter's API, with elevated access, to gain access to almost 3 million tweets posted in the past 30 days from all 535 legislators in the US Congress. We then extracted key words through spacy, excluding certain words (such as prepositions), then grouped them by Twitter handle and then counted the 50 most frequent words used by a given legislator. We found significant evidence for our hypotheses, with there being significant variations in the language used by members of different parties. Some of this difference was predicted in our hypotheses but we also find additional dimensions that we had not predicted. 
 
-Our findings provide evidence that **talk about whether or not our three hypotheses are supported** 
+The first part of this page highlights our group's motivations to choose this topic. Next, we formally define key questions and our hypotheses that legislators from the same party will use similar words, with Democrats using more rights-based language and Republicans using more traditional-based language. Then, we explain our data collection process, followed by our data analysis process. Lastly, we highlight our findings and conclusion.   
 
 ## Motivations
 
 Our group chose this topic area our final project for several reasons. All of our group members were increasingly aware of significant polarization in not only the US Congress (Jeong & Lowry, 2019) but also the wider US society (Iyengar et al., 2019). Having conducted their studies during the COVID-19 pandemic, an era known for what felt like unprecedented political polarisation on multiple policy positions in the US, our group developed a natural interest onto what American legislators have on their minds, whether or not that aligns with their party, and whether or not that contradicts members of other parties. 
 
-Some of us also had specific reasons to be interested in this particular topic. For example, one of our members, Maia, is American and wanted to gain further insight into the polarisation in her country, while Sarmad studies the philosophy of language and wanted to learn more about the relationship between words, thoughts and political ideologies. *Amara also studies politics for half of her degree. We believe that language is so much more powerful than most people think and that we might not realise how much of an affect it has on us and how it shapes our political opinions. However, people with high amounts of influence, like US politicians, may be aware of its power and therefore chose their words in a way which will influence people towards their personal agendas on big platforms like Twitter. By analysing which words different parties use the most over certain periods, we may be able to see more clearly what they were trying to achieve at that time.*
+Some of us also had specific reasons to be interested in this particular topic. For example, one of our members, Maia, is American and wanted to gain further insight into the polarisation in her country, while Sarmad studies the philosophy of language and wanted to learn more about the relationship between words, thoughts and political ideologies. Amara also studies politics for half of her degree. We believe that language is so much more powerful than most people think and that we might not realise how much of an effect it has on us and how it shapes our political opinions. However, people with high amounts of influence, like US politicians, may be aware of its power and therefore chose their words in a way which will influence people towards their personal agendas on big platforms like Twitter. By analysing which words different parties use the most over certain periods, we may be able to see more clearly what they were trying to achieve at that time.
 
 In doing research for this project, we were surprised to learn that such an analysis had, to our knowledge, not been conducted yet. In contributing this project, we hope to add to knowledge about political polarisation in the US and grow awareness about the potentially salient role played by words, language and Twitter in the political landscape. 
 
 ## Key Questions and Hypotheses 
 
-Firstly, we hypothesise that legislators from identical parties will have more commonalities in words used than legislators from differing parties. While we started on this hypothesis based on intuition, our hypothesis would later be informed by some existing empirical evidence that individuals from similar groups do tend to use similar words (Milroy & Margrain, 1980; Van Swol & Kane, 2018).
+H1: We hypothesise that Democrats will be more likely to use words such as "green" and "rights". 
 
-Secondly, we hypothesise that Democrats will be more likely to use words such as "green" and "rights". Our hypothesis was informed by the fact that the Democratic party is relatively more focused than Republicans on climate change (Kennedy & Johnson, 2020) and increasing rights for groups such as racial and sexual minorities (Jones, 2020), respectively. 
+This hypothesis was informed by the fact that the Democratic party is relatively more focused than Republicans on climate change (Kennedy & Johnson, 2020) and increasing rights for groups such as racial and sexual minorities (Jones, 2020), respectively. 
 
-Thirdly and lastly, we hypothesise that Republicans will be more likely to use words such as "family" and "border". This is because Republicans are generally known for their emphasis on traditional family values (Gronbeck-Tedesco, 2022), border security (Oliphant & Cerda, 2022), and crime (Gambino & Greve, 2022).
+H2: We hypothesise that Republicans will be more likely to use words such as "family", "border" and "crime". 
+
+We predict this because Republicans are generally known for their emphasis on traditional family values (Gronbeck-Tedesco, 2022), border security (Oliphant & Cerda, 2022), and crime (Gambino & Greve, 2022).
 
 ## Data Collection
 
 **Data Set:**
-We collected tweets from all of the current Congresspeople's Twitter accounts from the past 30 days. This amounted to almost 3 million tweets. We got the list of Twitter handles from a Excel spreadsheet titled Congressional Twitter Accounts created by the [University of California San Diego (UCSD)](https://ucsd.libguides.com/congress_twitter) (Smith, 2022). Our data set is comprised of 223 Democrats (including 4 Delegates) and 215 Republicans (including 1 Delegate and the Resident Commissioner of Puerto Rico), and 3 vacant seats. 
+We collected tweets from all of the current Congresspeople's Twitter accounts. Our time-frames were between 7th November to 7th December and 10th December to 10th January. This amounted to almost 3 million tweets. We got the list of Twitter handles from a Excel spreadsheet titled Congressional Twitter Accounts created by the [University of California San Diego (UCSD)](https://ucsd.libguides.com/congress_twitter) (Smith, 2022). Our data set is comprised of 223 Democrats (including 4 Delegates) and 215 Republicans (including 1 Delegate and the Resident Commissioner of Puerto Rico), and 3 vacant seats. 
 
 <img width="640" alt="Screen Shot 2023-01-04 at 8 22 27 PM" src="https://user-images.githubusercontent.com/117990566/210680386-51fec2fc-0a3b-4e0a-a43d-f653efc48b63.png">
 
@@ -53,7 +52,6 @@ This map illustrates the distribution of Congressional representatives throughou
 ---
 **Code Explanation:**
 The code we used to gather our data can be divided into four key sections. First, implementing the twitter API to make queries. Second, converting the twitter JSON response to a dataframe. Third, extracting key words from each tweet. Lastly, grouping and counting keywords per user.
-
 
 First, we implement the Twitter API to retrieve Twitter IDs and pages of tweets:
     
@@ -126,70 +124,70 @@ https://drive.google.com/file/d/1dQA9-0dUVCP86vxsk16WZewj3J7u6yGM/view?usp=drive
 tweets.csv:
 https://drive.google.com/file/d/1PgatNy2y8jExcTvWxDlkcaUwN9YTWHFV/view?usp=drive_web
 
-## Exploratory Data Analysis
-
-What is in the data? 
-What does it look like in general? 
-How big are your datasets? 
-What is the range and distribution of the most relevant variables?
-
-
 ## Findings
-*Below are the bar graphs showing the 50 most frequesntly used words for each political party:*
+We visualise our results through bar graphs and word clouds.
 
-*Democrats:*
+**Below: Figure 1a: The 50 most frequently used words by members of the Democrat Party**
 
 <img width="610" alt="image" src="https://user-images.githubusercontent.com/114494959/214915647-380281bf-695d-46e9-9f4e-dd665c399cb5.png">
 
-*Republicans:*
+**Below: Figure 2a: The 50 most frequently used words by members of the Republican Party**
 
 <img width="619" alt="image" src="https://user-images.githubusercontent.com/114494959/214916308-611d41a5-7e4a-4c9d-a040-9eb91b714aab.png">
 
-*In line with our hypotheses, we found that the most common words used by each party did, in fact, align with the known political ideologies of each respectively. To illustrate this, see below for similar plots including only words from the top 50 of each party which were usd exclusively by that party:*
-
-*Democrats:*
+**Below: Figure 1b: The 50 most frequently used words by Democrats that were not used in a similar frequency by Republicans**
 
 <img width="591" alt="image" src="https://user-images.githubusercontent.com/114494959/214915778-0e3480d0-58d4-4bcd-b62b-576c8245734c.png">
 
-*Republicans:*
+**Below: Figure 2b: The 50 most frequently used words by Republicans that were not used in a similar frequency by Democrats**
 
 <img width="620" alt="image" src="https://user-images.githubusercontent.com/114494959/214916182-5f8902a1-459f-4b56-85d0-a51c57a998e1.png">
 
-*These plots show the stark differences between the online approaches of the republicands and the democrats. Firstly, we can see differences in language based on ideology. In comparison, where we see "border" as a top word for the republicans, we see "care" and "protect" as top words for democrats, illustrating the republicans fixation on keeping strong borders and keeping people out of the country, in contrast to the democrats values of looking after and protecting the people who are already there. Where we see the word "business" being frequntly used by republicans, we see the word "woman" as a top word for the democrats. The world of business in the US is highly dominated by men and the US still suffers from a statistically significant gender pay gap in every state. Whilst the republicans are tweeting about how to improve business (for men), the democrats seem to be spreading ideologies of equality by increasing female representation in their tweets, demonstrating the democrats more progressive ideals.*
+**Below: Figure 1c: Word cloud of the Democrats' most frequently used words**
 
-*Secondly, something which we had not considered at the start of our project was how language would change as part of a party's election tactics. For example, we see that 'biden' is a very frequently used word by the republicans, and 'trump' is frequently used by the democrats, rather than vice versa. This gives us an insight into the parties' approaches to gaining support. It is safe to assume that each side is not using the name of the other's leader in a positive light, so we can only gather than each party adopts the tactic of tearing down the other side in order to gain support from the public. This is not a totally even split, 'biden' was the number one most frequent top 50 word used exclusively by the republicand, whereas 'trump' was down at number eight for the democrats, however both parties seem to have engaged in this corrupt strategy. Although, it is significant that 'biden' was the most frequent word for the republicans, as this shows that they spent more time (or more words) trying to bring the democrats into disrepute than they did talking about any one issue which is central to their policies and ideologies.*
-
-*Furthermore, the fact that both parties have resorted to this method tells us something about the users of Twitter. Perpetuated hate speech and echo chambers have been an issue on Twitter for quite some time, and some expect this to get worse after Elon Musk's recent takeover. Is it the nature of Twitter and it's algorithms which cause this and mean that this tactic of attacking the opposition has been deemed most successful by the two main political parties in the US? Or is it perhaps that these politicians are the part of the cause of Twitter's problem? This may be an interesting topic for further research, however, for now, we have found that US politicians generally see this approach as an efficient enough way to rally support for their party that it is one of the most frequentoccurences in their Tweets.*
-
-## Conclusion
-*Wordcloud of the democrats most frequently tweeted words:*
 <img width="646" alt="image" src="https://user-images.githubusercontent.com/114494959/214910742-7e20389a-0a29-4e97-810d-af996bb39a9c.png">
 
-*Wordcloud of the republicans most frequently tweeted words:*
+**Below: Figure 2c: Word cloud of the Republicans' most frequently used words**
+
 <img width="639" alt="image" src="https://user-images.githubusercontent.com/114494959/214911469-f3a67075-b16c-473f-bd96-24d4c3936200.png">
 
-*We definitely saw disparities between the langiage used by the democrats as opposed to the language used by the republicans. Many of our observations aligned with our initial hypotheses concerning the ideologies that each party would be expressing through their language and we also gained insight into the strategic side of politicians' tweets. If we were to continue our investigation, we would be interested to dicover the relationship between the nature of Twitter and the nature of its users (e.g. US politicians, as in this case), in terms of which influences the other more stongly (like the chicken or the egg question) or whether it is a mutual shaping of behaviour.*
+The figures above demonstrate considerable evidence for our hypotheses. In line with H1, we find that Democrats are more likely to use words that align with their party's political ideologies. For instance, as we predicted, we find that the Democrats use rights-based language such as "care" and "protect". Similarly, we find evidence for H2, with Republicans more likely to use words such as "border". However, we also find additional language patterns that we did not protect. For example, Republicans frequently use the word "business", which may be linked to their policies of protecting businesses and the free market (Furhmann, 2022). Similarly, we find the word "woman" as a top word for Democrats, which makes sense given the Democrats' ideological goal of empowering woman by taking policy positions such as reducing the gender pay gap and increasing feamle representation (Horowitz, 2020).
+
+Moreover, another thing we had not considered was the potential usage of language as part of a party's election tactics. For example, we see that 'Biden' is a very frequently used word by the Republicans, and 'Trump' is frequently used by the Democrats, rather than vice versa. This gives us an insight into the parties' approaches to gaining support. It is safe to assume that each side is not using the name of the other's leader in a positive light, so we can only gather than each party adopts the tactic of tearing down the other side in order to gain support from the public. This is not a totally even split, 'Biden' was the number one most frequently used word exclusively by the Republicans, whereas 'Trump' was down at number eight for the Democrats. Noth parties seem to have engaged in this strategy. 'Biden' being the most frequent word for the Republicans may suggest that Republicans may have spent more time (or more words) trying to discuss individuals in the Democratic Party, rather than talking about any one issue which is central to their policies and ideologies.
+
+This usage of language may also tell us something about the users of Twitter. Perpetuated hate speech and echo chambers have been an issue on Twitter for quite some time (Frenkel & Conger, 2022), and some expect this to get worse after Elon Musk's recent purchase of Twitter. Is it the nature of Twitter and it's algorithms which cause this and mean that this tactic of attacking the opposition has been deemed most successful by the two main political parties in the US? Or is it perhaps that these politicians are the part of the cause of Twitter's problem? This may be an interesting topic for further research, however, for now, we have found that US politicians generally see this approach as an efficient enough way to rally support for their party that it is one of the most frequent occurences in their tweets.
+
+Despite our overall considerable evidence, our hypotheses are not fully substantiated. We did not find evidence of the Democrats being more likely to use, for example, climate-focused language, nor did we find the Republicans more focused on crime. This suggests that there may be certain policy areas that are more important or perhaps more polarised that legislators feel a greater need to discuss on Twitter. Alternatively, it may simply be that temporal factors play a role here - for example, closer to a climate-focused protest or event, legislators may discuss climate more on Twitter. 
+
+
+## Conclusion
+
+Overall, we saw considerable disparities between the language used by the Democrats as opposed to the language used by the Republicans. Many of our observations aligned with our initial hypotheses concerning the ideologies that each party would be expressing through their language and we also gained insight into the strategic side of politicians' tweets. If we were to continue our investigation, we would be interested to investigate the relationship between the nature of Twitter and the nature of its users (e.g. US politicians, as in this case), in terms of which influences the other more stongly (like the chicken or the egg question) or whether it is a mutual shaping of behaviour.
 
 ## Contributions
 
 **Maia:**
-Maia created the code to collect the Twitter dataset showing the 50 most common used words per twitter handles. She also wrote the Index, Motivation, Data Collection, and Citations sections of the README.md.
+Maia created the code to collect the Twitter dataset showing the 50 most common used words per twitter handles. She also wrote the Index, Motivation, Data Collection, and Bibliography sections of the README.md. Lastly, she created the webpage and added a theme.
 
 **Amara:**
 *Amara analysed the data, transforming it into multiple more easily useable dataframes. She then created some more easily interpretable bar graphs and wordclouds. She interpreted the data and drew conclusions based on our observations.*
 
 **Sarmad:**
-Sarmad created, edited and formatted the web-page. He wrote the Executive Summary and Key Questions sections of the README.md. He also fact-checked and cited all of the substantive claims made about the Democrats and Republicans throughout the README.md and created the Bibliography below. Lastly, he copy-edited the entire README.md to ensure cohesiveness.
+Sarmad wrote the Abstract, Motivations, Key Questions & Hypotheses, and Bibliography sections of the README.md, while also copy-editing the rest of it to ensure cohesiveness and consistency. He also did empirical research for all the substantive claims made about the Democrats and Republicans throughout the README-md. 
 
 ## Bibliography
 
 Brush, M. (2010) White House not concerned about new census numbers, Michigan Radio. Michigan Radio. Available at: https://www.michiganradio.org/politics-government/2010-12-21/white-house-not-concerned-about-new-census-numbers (Accessed: January 21, 2023). 
 
-*Frenkel, S. and Conger, K. (2022) Hate Speech’s Rise on Twitter Is Unprecedented, Researchers Find. Available at: https://www.nytimes.com/2022/12/02/technology/twitter-hate-speech.html (Accessed: January 26, 2023).*
+Frenkel, S. and Conger, K. (2022) Hate Speech’s Rise on Twitter Is Unprecedented, Researchers Find. Available at: https://www.nytimes.com/2022/12/02/technology/twitter-hate-speech.html (Accessed: January 26, 2023).
+
+Furhmann, R. (2022) Republican and Democratic approaches to regulating the economy, Investopedia. Investopedia. Available at: https://www.investopedia.com/ask/answers/regulating-economy.asp (Accessed: January 27, 2023). 
 
 Gambino, L. and Greve, J.E. (2022) Democrats try to flip narrative amid barrage of 'soft on Crime' attack ads, The Guardian. Guardian News and Media. Available at: https://www.theguardian.com/us-news/2022/oct/27/republicans-crime-midterm-election (Accessed: January 21, 2023). 
 
 Gronbeck-Tedesco, J.A. (2022) The GOP has revived its 1970s "Traditional family values" playbook, Slate Magazine. Slate. Available at: https://slate.com/news-and-politics/2022/04/the-gops-new-american-family-values.html (Accessed: January 21, 2023). 
+
+Horowitz, J.M. (2020) Wide partisan gaps in U.S. over how far the country has come on gender equality, Pew Research Center's Social &amp; Demographic Trends Project. Pew Research Center. Available at: https://www.pewresearch.org/social-trends/2017/10/18/wide-partisan-gaps-in-u-s-over-how-far-the-country-has-come-on-gender-equality/ (Accessed: January 27, 2023). 
 
 Iyengar, S. et al. (2019) “The origins and consequences of affective polarization in the United States,” Annual Review of Political Science, 22(1), pp. 129–146. Available at: https://doi.org/10.1146/annurev-polisci-051117-073034. 
 
@@ -206,5 +204,3 @@ Oliphant, J.B. and Cerda, A. (2022) Republicans and Democrats have different top
 Smith, K.L. (2022) Libguides: Congressional twitter accounts: Home, Home - Congressional Twitter Accounts - LibGuides at University of California San Diego. University of California San Diego. Available at: https://ucsd.libguides.com/congress_twitter (Accessed: January 21, 2023). 
 
 Van Swol, L.M. and Kane, A.A. (2018) “Language and group processes: An integrative, interdisciplinary review,” Small Group Research, 50(1), pp. 3–38. Available at: https://doi.org/10.1177/1046496418785019. 
-
-*Wisniewski, M. (2022) What Is the Gender Wage Gap in Your State? Available at: https://www.census.gov/library/stories/2022/03/what-is-the-gender-wage-gap-in-your-state.html#:~:text=The%20gender%2Dbased%20wage%20gap,2019%20American%20Community%20Survey%20(ACS) (Accessed: January 26, 2023).*
